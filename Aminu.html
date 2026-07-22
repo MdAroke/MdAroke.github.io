@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aminu · Data Analyst</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #0b1a2b;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
+        }
+
+        /* Header / Profile */
+        .profile-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 1.5rem;
+        }
+
+        .name-title h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0b1a2b;
+        }
+
+        .name-title .badge {
+            display: inline-block;
+            background: #eef2f6;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+            color: #1e3a5f;
+        }
+
+        .contact-mini {
+            text-align: right;
+            font-size: 0.95rem;
+            color: #2c3e50;
+        }
+
+        .contact-mini i {
+            margin-right: 6px;
+            color: #2a6f97;
+            width: 1.2rem;
+        }
+
+        .contact-mini div {
+            margin-bottom: 4px;
+        }
+
+        /* Stats cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            background: #f1f5f9;
+            padding: 1.2rem 1.5rem;
+            border-radius: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2b44;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #3d5a73;
+        }
+
+        /* Core tools */
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            background: #ffffff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid #dce3ec;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .tools-row span {
+            font-weight: 500;
+            color: #1e3a5f;
+        }
+
+        .tools-row i {
+            margin-right: 4px;
+            color: #2a6f97;
+        }
+
+        .tools-row .muted-tag {
+            background: #eef2f6;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #2c3e50;
+        }
+
+        /* About + Proficiency two columns */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-text h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0b1a2b;
+        }
+
+        .about-text p {
+            color: #1e2f3f;
+        }
+
+        .proficiency h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #0b1a2b;
+        }
+
+        .skill-bar {
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-bar .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .skill-bar .bar-bg {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin-top: 2px;
+        }
+
+        .skill-bar .bar-fill {
+            height: 6px;
+            background: #1e4a6b;
+            border-radius: 10px;
+            width: 85%; /* example */
+        }
+
+        .skill-bar .bar-fill.sql { width: 80%; }
+        .skill-bar .bar-fill.pbi { width: 88%; }
+        .skill-bar .bar-fill.excel { width: 75%; }
+        .skill-bar .bar-fill.zoo { width: 70%; }
+
+        .self-reported {
+            font-size: 0.7rem;
+            color: #5d7388;
+            margin-top: 6px;
+            text-align: right;
+            border-top: 1px dashed #dce3ec;
+            padding-top: 6px;
+        }
+
+        /* Projects */
+        .projects h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #0b1a2b;
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #f8fafc;
+            padding: 1.2rem 1.2rem 1rem 1.2rem;
+            border-radius: 24px;
+            border: 1px solid #e9edf2;
+            transition: 0.1s ease;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0b2b44;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            margin-top: 0.25rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #dce3ec;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            color: #1e3a5f;
+        }
+
+        /* Footer / Meta */
+        .footer-meta {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9edf2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
+        .footer-meta i {
+            margin-right: 5px;
+            color: #2a6f97;
+        }
+
+        .footer-meta .email {
+            font-weight: 500;
+        }
+
+        @media (max-width: 650px) {
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .profile-header {
+                flex-direction: column;
+            }
+            .contact-mini {
+                text-align: left;
+                margin-top: 0.5rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                border-radius: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Profile -->
+    <div class="profile-header">
+        <div class="name-title">
+            <h1>Aminu</h1>
+            <div class="badge">Data Analyst · Power BI · SQL · Excel</div>
+            <div style="margin-top: 6px; font-size: 0.9rem; color: #1e3a5f;">
+                <i class="fas fa-graduation-cap"></i> BSc Zoology · Bayero University, Kano
+            </div>
+        </div>
+        <div class="contact-mini">
+            <div><i class="fas fa-map-pin"></i> Kano, NG</div>
+            <div><i class="fas fa-globe"></i> 3 countries · data</div>
+            <div><i class="fas fa-certificate"></i> 6 certifications</div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Projects</div></div>
+        <div class="stat-item"><div class="stat-number">28</div><div class="stat-label">Dashboards</div></div>
+        <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Reports</div></div>
+        <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Teams</div></div>
+    </div>
+
+    <!-- Core tools -->
+    <div class="tools-row">
+        <span><i class="fas fa-tools"></i> Core tools</span>
+        <span><i class="fas fa-chart-pie"></i> Power BI</span>
+        <span><i class="fas fa-file-excel"></i> Excel</span>
+        <span><i class="fas fa-database"></i> SQL</span>
+        <span><i class="fas fa-calculator"></i> DAX</span>
+        <span class="muted-tag"><i class="fas fa-leaf"></i> Zoology · Research</span>
+    </div>
+
+    <!-- About + Proficiency -->
+    <div class="two-col">
+        <div class="about-text">
+            <h2><i class="fas fa-user-astronaut"></i> About</h2>
+            <p>Data Analyst with a background in Zoology — blending analytical rigor with biological insight. Proficient in Power BI, Excel, and SQL to transform raw data into strategic stories.</p>
+            <p style="margin-top: 0.6rem;"><i class="fas fa-clock"></i> 2+ years analytics</p>
+        </div>
+        <div class="proficiency">
+            <h3><i class="fas fa-chart-simple"></i> Proficiency</h3>
+            <div class="skill-bar"><div class="skill-label"><span>SQL</span><span>80%</span></div><div class="bar-bg"><div class="bar-fill sql"></div></div></div>
+            <div class="skill-bar"><div class="skill-label"><span>Power BI</span><span>88%</span></div><div class="bar-bg"><div class="bar-fill pbi"></div></div></div>
+            <div class="skill-bar"><div class="skill-label"><span>Excel</span><span>75%</span></div><div class="bar-bg"><div class="bar-fill excel"></div></div></div>
+            <div class="skill-bar"><div class="skill-label"><span>Zoology / Research</span><span>70%</span></div><div class="bar-bg"><div class="bar-fill zoo"></div></div></div>
+            <div class="self-reported">self‑reported</div>
+        </div>
+    </div>
+
+    <!-- Featured Projects -->
+    <div class="projects">
+        <h2><i class="fas fa-folder-open"></i> Featured projects</h2>
+        <div class="project-cards">
+            <div class="card">
+                <h3>Sales Dashboard</h3>
+                <p>Interactive Power BI dashboard with YoY growth, regional filters.</p>
+                <span class="tag"><i class="fas fa-chart-line"></i> Power BI</span>
+            </div>
+            <div class="card">
+                <h3>Zoology data</h3>
+                <p>SQL + Excel: species distribution analysis & biodiversity trends.</p>
+                <span class="tag"><i class="fas fa-dna"></i> SQL · Excel</span>
+            </div>
+            <div class="card">
+                <h3>Financial KPI</h3>
+                <p>Executive dashboard with DAX measures, profit & margin analysis.</p>
+                <span class="tag"><i class="fas fa-coins"></i> DAX · Power BI</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-meta">
+        <div>
+            <i class="fas fa-envelope"></i> <span class="email">aminu.data@portfolio</span>
+        </div>
+        <div>
+            <i class="fas fa-code"></i> built with <i class="fas fa-heart" style="color: #b22234;"></i> for data
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
