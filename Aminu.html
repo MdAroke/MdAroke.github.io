@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aminu · Data Analyst</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Suite</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* Reset & Base */
+        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -15,366 +15,591 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f1f5f9;
             color: #0b1a2b;
-            line-height: 1.6;
-            padding: 2rem 1.5rem;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            background: white;
-            border-radius: 2rem;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
-        }
-
-        /* Header / Profile */
-        .profile-header {
+        /* ---------- TOP NAVIGATION ---------- */
+        .navbar {
+            background: #0b1a2b;
+            color: #fff;
+            padding: 0.8rem 2rem;
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #e9edf2;
-            padding-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .name-title h1 {
+        .navbar .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .navbar .brand i {
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 1rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover {
+            background: #2d4055;
+            color: #fff;
+        }
+        .nav-links a.active {
+            background: #1e4a6b;
+            color: #fff;
+        }
+
+        .nav-links .auth-btn {
+            background: transparent;
+            border: 1.5px solid #4fc3f7;
+            color: #4fc3f7;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .nav-links .auth-btn:hover {
+            background: #4fc3f7;
+            color: #0b1a2b;
+        }
+
+        /* ---------- PAGE CONTAINER ---------- */
+        .page-container {
+            flex: 1;
+            padding: 2rem 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ---------- PAGE SECTIONS (hidden by default) ---------- */
+        .page {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- HOME / SLIDESHOW ---------- */
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto 2rem auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.25);
+            background: #0b1a2b;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 2.5rem 2rem;
+            color: #fff;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* slide backgrounds (matching your images) */
+        .slide-1 { background: linear-gradient(145deg, #0b2b44, #1a4a6e); }
+        .slide-2 { background: linear-gradient(145deg, #1e3a2f, #2d5a4a); }
+        .slide-3 { background: linear-gradient(145deg, #3d2a1e, #5a3d2a); }
+        .slide-4 { background: linear-gradient(145deg, #2a1e3d, #4a2d6e); }
+        .slide-5 { background: linear-gradient(145deg, #1e2a3d, #2a4a6e); }
+
+        .slide h2 {
             font-size: 2.8rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #0b1a2b;
+            margin-bottom: 0.5rem;
         }
-
-        .name-title .badge {
+        .slide p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        .slide .badge-slide {
             display: inline-block;
-            background: #eef2f6;
-            padding: 0.25rem 1rem;
-            border-radius: 30px;
+            background: rgba(255,255,255,0.15);
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
             font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 0.25rem;
-            color: #1e3a5f;
+            margin-top: 1rem;
+            backdrop-filter: blur(4px);
         }
 
-        .contact-mini {
-            text-align: right;
-            font-size: 0.95rem;
-            color: #2c3e50;
+        /* slideshow controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .slider-controls button {
+            background: #0b1a2b;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .slider-controls button:hover {
+            background: #1e4a6b;
+            transform: scale(1.02);
+        }
+        .dots {
+            display: flex;
+            gap: 10px;
+        }
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: 0.15s;
+            border: none;
+        }
+        .dot.active {
+            background: #0b1a2b;
+            transform: scale(1.2);
         }
 
-        .contact-mini i {
-            margin-right: 6px;
-            color: #2a6f97;
-            width: 1.2rem;
-        }
-
-        .contact-mini div {
-            margin-bottom: 4px;
-        }
-
-        /* Stats cards */
-        .stats-grid {
+        /* ---------- DASHBOARD CARDS (for other pages) ---------- */
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 1rem;
-            background: #f1f5f9;
-            padding: 1.2rem 1.5rem;
-            border-radius: 40px;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
-
-        .stat-item {
-            text-align: center;
+        .card {
+            background: #fff;
+            padding: 1.5rem 1.2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e9edf2;
         }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #0b2b44;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
+        .card h3 {
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            color: #3d5a73;
-        }
-
-        /* Core tools */
-        .tools-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.2rem;
-            background: #ffffff;
-            padding: 0.8rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid #dce3ec;
-            margin-bottom: 2rem;
-            align-items: center;
-        }
-
-        .tools-row span {
-            font-weight: 500;
-            color: #1e3a5f;
-        }
-
-        .tools-row i {
-            margin-right: 4px;
-            color: #2a6f97;
-        }
-
-        .tools-row .muted-tag {
-            background: #eef2f6;
-            padding: 0.1rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            color: #2c3e50;
-        }
-
-        /* About + Proficiency two columns */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .about-text h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #0b1a2b;
-        }
-
-        .about-text p {
-            color: #1e2f3f;
-        }
-
-        .proficiency h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #0b1a2b;
-        }
-
-        .skill-bar {
-            margin-bottom: 0.6rem;
-        }
-
-        .skill-bar .skill-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-        }
-
-        .skill-bar .bar-bg {
-            width: 100%;
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 10px;
-            margin-top: 2px;
-        }
-
-        .skill-bar .bar-fill {
-            height: 6px;
-            background: #1e4a6b;
-            border-radius: 10px;
-            width: 85%; /* example */
-        }
-
-        .skill-bar .bar-fill.sql { width: 80%; }
-        .skill-bar .bar-fill.pbi { width: 88%; }
-        .skill-bar .bar-fill.excel { width: 75%; }
-        .skill-bar .bar-fill.zoo { width: 70%; }
-
-        .self-reported {
-            font-size: 0.7rem;
             color: #5d7388;
-            margin-top: 6px;
-            text-align: right;
-            border-top: 1px dashed #dce3ec;
-            padding-top: 6px;
         }
-
-        /* Projects */
-        .projects h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem 0;
-            color: #0b1a2b;
+        .card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0.3rem 0 0.1rem;
         }
-
-        .project-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: #f8fafc;
-            padding: 1.2rem 1.2rem 1rem 1.2rem;
-            border-radius: 24px;
-            border: 1px solid #e9edf2;
-            transition: 0.1s ease;
-        }
-
-        .card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #0b2b44;
-        }
-
-        .card p {
-            font-size: 0.9rem;
+        .card .sub {
+            font-size: 0.85rem;
             color: #2c3e50;
-            margin-top: 0.25rem;
         }
 
-        .card .tag {
-            display: inline-block;
-            background: #dce3ec;
-            padding: 0.1rem 0.7rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
+        .table-wrap {
+            overflow-x: auto;
+            background: #fff;
+            border-radius: 24px;
+            padding: 1rem;
+            border: 1px solid #e9edf2;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.7rem 0.5rem;
+            background: #f8fafc;
             color: #1e3a5f;
         }
+        td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #eef2f6;
+        }
 
-        /* Footer / Meta */
-        .footer-meta {
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e9edf2;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .page-title i {
+            color: #1e4a6b;
+            margin-right: 10px;
+        }
+
+        /* ---------- AUTH PAGES (Login / Sign Up) ---------- */
+        .auth-box {
+            max-width: 440px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
+            border: 1px solid #e9edf2;
+        }
+        .auth-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .auth-box p.sub {
+            color: #5d7388;
+            margin-bottom: 1.5rem;
+        }
+        .auth-box label {
+            font-weight: 500;
+            display: block;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .auth-box input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid #dce3ec;
+            border-radius: 16px;
+            font-size: 1rem;
+            background: #fafcff;
+        }
+        .auth-box .btn-primary {
+            background: #0b1a2b;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 1.2rem;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .auth-box .btn-primary:hover {
+            background: #1e4a6b;
+        }
+        .auth-switch {
+            text-align: center;
+            margin-top: 1.2rem;
             color: #2c3e50;
         }
-
-        .footer-meta i {
-            margin-right: 5px;
-            color: #2a6f97;
+        .auth-switch a {
+            color: #1e4a6b;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        .footer-meta .email {
-            font-weight: 500;
-        }
-
-        @media (max-width: 650px) {
-            .two-col {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .profile-header {
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .navbar {
                 flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.8rem 1rem;
             }
-            .contact-mini {
-                text-align: left;
-                margin-top: 0.5rem;
+            .nav-links {
+                justify-content: center;
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                border-radius: 24px;
+            .slide h2 {
+                font-size: 2rem;
+            }
+            .page-container {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
 
-    <!-- Profile -->
-    <div class="profile-header">
-        <div class="name-title">
-            <h1>Aminu</h1>
-            <div class="badge">Data Analyst · Power BI · SQL · Excel</div>
-            <div style="margin-top: 6px; font-size: 0.9rem; color: #1e3a5f;">
-                <i class="fas fa-graduation-cap"></i> BSc Zoology · Bayero University, Kano
+<!-- ========== NAVIGATION ========== -->
+<nav class="navbar">
+    <div class="brand"><i class="fas fa-chart-line"></i> DataSuite</div>
+    <div class="nav-links">
+        <a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a>
+        <a href="#" data-page="payroll"><i class="fas fa-coins"></i> Payroll</a>
+        <a href="#" data-page="grades"><i class="fas fa-graduation-cap"></i> Grades</a>
+        <a href="#" data-page="sales"><i class="fas fa-chart-simple"></i> Sales</a>
+        <a href="#" class="auth-btn" data-page="login"><i class="fas fa-user"></i> Login</a>
+    </div>
+</nav>
+
+<!-- ========== PAGE CONTAINER ========== -->
+<div class="page-container">
+
+    <!-- ===== HOME PAGE (Slideshow) ===== -->
+    <div id="page-home" class="page active">
+        <h2 class="page-title"><i class="fas fa-images"></i> Dashboard Gallery</h2>
+        <div class="slideshow-container">
+            <div class="slides" id="slides">
+                <div class="slide slide-1">
+                    <h2>📊 HR Payroll Dashboard</h2>
+                    <p>Accurate Payroll. Happy Employees. — 250 employees, ₹1.25Cr gross pay.</p>
+                    <span class="badge-slide"><i class="fas fa-calendar"></i> May 2024</span>
+                </div>
+                <div class="slide slide-2">
+                    <h2>📈 Idealnovate Grades</h2>
+                    <p>Count of Names by Group · Average Grade % · Gender breakdown</p>
+                    <span class="badge-slide"><i class="fas fa-users"></i> 19 members</span>
+                </div>
+                <div class="slide slide-3">
+                    <h2>🧾 NDLEA · UN Against Drugs</h2>
+                    <p>YSC · MMAR · Nafies — United Nations campaign visuals</p>
+                    <span class="badge-slide"><i class="fas fa-globe"></i> Global initiative</span>
+                </div>
+                <div class="slide slide-4">
+                    <h2>🎓 NYSC · University of Nigeria</h2>
+                    <p>National Youth Service Corps — Nairobi chapter</p>
+                    <span class="badge-slide"><i class="fas fa-university"></i> NYSC</span>
+                </div>
+                <div class="slide slide-5">
+                    <h2>📊 4 Sales Metrics</h2>
+                    <p>Revenue ₱25.6M · Sales Growth 24.7% · Customers 1,250 · Profit ₱6.4M</p>
+                    <span class="badge-slide"><i class="fas fa-rocket"></i> Chidi Mary · Data Academy</span>
+                </div>
             </div>
         </div>
-        <div class="contact-mini">
-            <div><i class="fas fa-map-pin"></i> Kano, NG</div>
-            <div><i class="fas fa-globe"></i> 3 countries · data</div>
-            <div><i class="fas fa-certificate"></i> 6 certifications</div>
+
+        <div class="slider-controls">
+            <button id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+            <div class="dots" id="dots"></div>
+            <button id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <p style="text-align:center; color:#5d7388; margin-top:1rem;"><i class="fas fa-info-circle"></i> 5 slides — from your uploaded dashboards</p>
+    </div>
+
+    <!-- ===== PAYROLL PAGE ===== -->
+    <div id="page-payroll" class="page">
+        <h2 class="page-title"><i class="fas fa-coins"></i> HR Payroll Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="card"><h3>Total Employees</h3><div class="value">250</div><div class="sub">+5 vs Apr 2024</div></div>
+            <div class="card"><h3>Gross Pay</h3><div class="value">₹1,25,80,000</div><div class="sub">+7.2% vs Apr</div></div>
+            <div class="card"><h3>Total Deductions</h3><div class="value">₹32,45,000</div><div class="sub">+6.1% vs Apr</div></div>
+            <div class="card"><h3>Net Pay</h3><div class="value">₹93,35,000</div><div class="sub">+7.8% vs Apr</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0;">
+            <div class="card"><h3>Net Pay by Dept</h3><div>IT 28% · Finance 20% · HR 16% · Sales 18% · Ops 12% · Other 6%</div></div>
+            <div class="card"><h3>Net Pay Distribution</h3><div>0-20K 8% · 20-40K 36% · 40-60K 28% · 60-80K 15% · 80K-1L 8% · 1L+ 5%</div></div>
+        </div>
+
+        <div class="table-wrap">
+            <h4 style="margin-bottom:0.5rem;"><i class="fas fa-list"></i> Payroll Register (Sample)</h4>
+            <table>
+                <tr><th>Emp ID</th><th>Name</th><th>Dept</th><th>Designation</th><th>Gross Pay</th><th>Deductions</th><th>Payroll Cost</th></tr>
+                <tr><td>E001</td><td>Rahul Sharma</td><td>IT</td><td>Software Engineer</td><td>30,000</td><td>20,000</td><td>50,000</td></tr>
+                <tr><td>E002</td><td>Priya Verma</td><td>Finance</td><td>Analyst</td><td>25,000</td><td>15,000</td><td>40,000</td></tr>
+                <tr><td>E003</td><td>Amit Singh</td><td>Sales</td><td>Executive</td><td>20,000</td><td>18,000</td><td>38,000</td></tr>
+                <tr><td>E004</td><td>Neha Gupta</td><td>HR</td><td>HR Executive</td><td>22,000</td><td>12,000</td><td>34,000</td></tr>
+                <tr><td>E005</td><td>Vikram Patel</td><td>Operations</td><td>Sr. Executive</td><td>28,000</td><td>22,000</td><td>50,000</td></tr>
+            </table>
+            <p style="margin-top:0.8rem; font-size:0.85rem; color:#5d7388;"><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Payroll Completed on 31-May-2024 · Status: COMPLETED</p>
         </div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-        <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Projects</div></div>
-        <div class="stat-item"><div class="stat-number">28</div><div class="stat-label">Dashboards</div></div>
-        <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Reports</div></div>
-        <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Teams</div></div>
-    </div>
-
-    <!-- Core tools -->
-    <div class="tools-row">
-        <span><i class="fas fa-tools"></i> Core tools</span>
-        <span><i class="fas fa-chart-pie"></i> Power BI</span>
-        <span><i class="fas fa-file-excel"></i> Excel</span>
-        <span><i class="fas fa-database"></i> SQL</span>
-        <span><i class="fas fa-calculator"></i> DAX</span>
-        <span class="muted-tag"><i class="fas fa-leaf"></i> Zoology · Research</span>
-    </div>
-
-    <!-- About + Proficiency -->
-    <div class="two-col">
-        <div class="about-text">
-            <h2><i class="fas fa-user-astronaut"></i> About</h2>
-            <p>Data Analyst with a background in Zoology — blending analytical rigor with biological insight. Proficient in Power BI, Excel, and SQL to transform raw data into strategic stories.</p>
-            <p style="margin-top: 0.6rem;"><i class="fas fa-clock"></i> 2+ years analytics</p>
+    <!-- ===== GRADES PAGE ===== -->
+    <div id="page-grades" class="page">
+        <h2 class="page-title"><i class="fas fa-graduation-cap"></i> Idealnovate Grade Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="card"><h3>Count of Names</h3><div class="value">19</div><div class="sub">Total members</div></div>
+            <div class="card"><h3>Count of Region</h3><div class="value">4</div><div class="sub">Regions</div></div>
+            <div class="card"><h3>Average Grade %</h3><div class="value">84.2%</div><div class="sub">Overall</div></div>
         </div>
-        <div class="proficiency">
-            <h3><i class="fas fa-chart-simple"></i> Proficiency</h3>
-            <div class="skill-bar"><div class="skill-label"><span>SQL</span><span>80%</span></div><div class="bar-bg"><div class="bar-fill sql"></div></div></div>
-            <div class="skill-bar"><div class="skill-label"><span>Power BI</span><span>88%</span></div><div class="bar-bg"><div class="bar-fill pbi"></div></div></div>
-            <div class="skill-bar"><div class="skill-label"><span>Excel</span><span>75%</span></div><div class="bar-bg"><div class="bar-fill excel"></div></div></div>
-            <div class="skill-bar"><div class="skill-label"><span>Zoology / Research</span><span>70%</span></div><div class="bar-bg"><div class="bar-fill zoo"></div></div></div>
-            <div class="self-reported">self‑reported</div>
-        </div>
-    </div>
 
-    <!-- Featured Projects -->
-    <div class="projects">
-        <h2><i class="fas fa-folder-open"></i> Featured projects</h2>
-        <div class="project-cards">
-            <div class="card">
-                <h3>Sales Dashboard</h3>
-                <p>Interactive Power BI dashboard with YoY growth, regional filters.</p>
-                <span class="tag"><i class="fas fa-chart-line"></i> Power BI</span>
-            </div>
-            <div class="card">
-                <h3>Zoology data</h3>
-                <p>SQL + Excel: species distribution analysis & biodiversity trends.</p>
-                <span class="tag"><i class="fas fa-dna"></i> SQL · Excel</span>
-            </div>
-            <div class="card">
-                <h3>Financial KPI</h3>
-                <p>Executive dashboard with DAX measures, profit & margin analysis.</p>
-                <span class="tag"><i class="fas fa-coins"></i> DAX · Power BI</span>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+            <div class="card"><h3>Count by Group</h3><div>Group A: 4 · Group B: 6 · Group C: 5 · Group D: 4</div></div>
+            <div class="card"><h3>Average by Group</h3><div>A: 317 · B: 311 · C: 306 · D: 301</div></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem;">
+            <h3><i class="fas fa-venus-mars"></i> Gender Breakdown</h3>
+            <div>Female: 9 (47.4%) · Male: 10 (52.6%)</div>
+            <div style="margin-top:0.4rem; background:#e2e8f0; border-radius:30px; height:12px; width:100%; overflow:hidden; display:flex;">
+                <span style="display:block; width:47.4%; background:#6d4c9a; height:100%;"></span>
+                <span style="display:block; width:52.6%; background:#2a6f97; height:100%;"></span>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer-meta">
-        <div>
-            <i class="fas fa-envelope"></i> <span class="email">aminu.data@portfolio</span>
+    <!-- ===== SALES PAGE ===== -->
+    <div id="page-sales" class="page">
+        <h2 class="page-title"><i class="fas fa-chart-simple"></i> 4 Sales Metrics</h2>
+        <div class="dashboard-grid">
+            <div class="card"><h3>Revenue</h3><div class="value">₱25.6M</div><div class="sub">+18.5% vs last month</div></div>
+            <div class="card"><h3>Sales Growth</h3><div class="value">24.7%</div><div class="sub">Growth rate</div></div>
+            <div class="card"><h3>Customers</h3><div class="value">1,250</div><div class="sub">+12.3% vs last month</div></div>
+            <div class="card"><h3>Profit</h3><div class="value">₱6.4M</div><div class="sub">+20.1% vs last month</div></div>
         </div>
-        <div>
-            <i class="fas fa-code"></i> built with <i class="fas fa-heart" style="color: #b22234;"></i> for data
+        <div class="card" style="margin-top:1rem;">
+            <h3><i class="fas fa-lightbulb"></i> Insights</h3>
+            <p style="font-size:1.1rem;">"You can’t improve what you don’t measure." — Track what matters, understand performance, make smarter decisions.</p>
+            <p style="margin-top:0.5rem; color:#1e4a6b; font-weight:500;"><i class="fas fa-user"></i> Chidi Mary · DATA ACADEMY</p>
+        </div>
+    </div>
+
+    <!-- ===== LOGIN PAGE ===== -->
+    <div id="page-login" class="page">
+        <div class="auth-box">
+            <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+            <p class="sub">Welcome back! Sign in to your dashboard.</p>
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" value="demo@datasuite.com" />
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" value="password123" />
+            <button class="btn-primary"><i class="fas fa-arrow-right-to-bracket"></i> Sign In</button>
+            <div class="auth-switch">Don't have an account? <a onclick="switchPage('signup')">Sign Up</a></div>
+        </div>
+    </div>
+
+    <!-- ===== SIGN UP PAGE ===== -->
+    <div id="page-signup" class="page">
+        <div class="auth-box">
+            <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+            <p class="sub">Create your free account.</p>
+            <label>Full Name</label>
+            <input type="text" placeholder="Jane Doe" />
+            <label>Email</label>
+            <input type="email" placeholder="jane@example.com" />
+            <label>Password</label>
+            <input type="password" placeholder="Create a strong password" />
+            <button class="btn-primary"><i class="fas fa-user-check"></i> Create Account</button>
+            <div class="auth-switch">Already have an account? <a onclick="switchPage('login')">Login</a></div>
         </div>
     </div>
 
 </div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+    // ----- Navigation: switch pages -----
+    const navLinks = document.querySelectorAll('.nav-links a[data-page]');
+    const pages = {
+        home: document.getElementById('page-home'),
+        payroll: document.getElementById('page-payroll'),
+        grades: document.getElementById('page-grades'),
+        sales: document.getElementById('page-sales'),
+        login: document.getElementById('page-login'),
+        signup: document.getElementById('page-signup')
+    };
+
+    function switchPage(pageId) {
+        // hide all pages
+        Object.values(pages).forEach(p => p.classList.remove('active'));
+        // show target
+        if (pages[pageId]) pages[pageId].classList.add('active');
+        // update nav active class
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.dataset.page === pageId) link.classList.add('active');
+        });
+        // if we switch to login or signup, make sure auth buttons highlight
+        if (pageId === 'login' || pageId === 'signup') {
+            navLinks.forEach(link => {
+                if (link.dataset.page === 'login') link.classList.add('active');
+            });
+        }
+        // reset slideshow if home is opened
+        if (pageId === 'home') {
+            // re-init dot state if needed
+            updateDots();
+        }
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.dataset.page;
+            if (page === 'login' || page === 'signup') {
+                switchPage(page);
+            } else {
+                switchPage(page);
+            }
+        });
+    });
+
+    // Expose switchPage globally for inline onclick
+    window.switchPage = switchPage;
+
+    // ----- Slideshow -----
+    const slides = document.getElementById('slides');
+    const dotsContainer = document.getElementById('dots');
+    let currentSlide = 0;
+    const totalSlides = 5;
+
+    // Create dots
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentSlide = index;
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    }
+
+    function updateDots() {
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    document.getElementById('prevSlide').addEventListener('click', () => goToSlide(currentSlide - 1));
+    document.getElementById('nextSlide').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    // Auto-slide every 6 seconds
+    setInterval(() => goToSlide(currentSlide + 1), 6000);
+
+    // ----- Set default page (home) on load -----
+    switchPage('home');
+</script>
+
 </body>
 </html>
