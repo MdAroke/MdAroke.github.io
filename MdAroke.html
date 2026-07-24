@@ -7,7 +7,7 @@
   
   <style>
     /* ============================================
-       COMPLETE STYLES - MlinkTech Class
+       COMPLETE STYLES - MLINKTECH
        ============================================ */
     
     /* ===== RESET & BASE ===== */
@@ -35,12 +35,9 @@
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --radius: 12px;
       --gradient: linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #01579b 100%);
-      --gradient-warm: linear-gradient(135deg, #ff6f00 0%, #f57c00 100%);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -97,7 +94,6 @@
     .btn-secondary:hover {
       background: #e65100;
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(255, 111, 0, 0.4);
     }
 
     .btn-success {
@@ -129,15 +125,8 @@
       transform: translateY(-3px);
     }
 
-    .btn-block {
-      display: block;
-      width: 100%;
-    }
-
-    .btn-sm {
-      padding: 8px 20px;
-      font-size: 0.85rem;
-    }
+    .btn-block { display: block; width: 100%; }
+    .btn-sm { padding: 8px 20px; font-size: 0.85rem; }
 
     /* ===== NAVIGATION ===== */
     .navbar {
@@ -229,19 +218,9 @@
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
     /* ===== PAGE CONTAINER ===== */
-    .page-container {
-      flex: 1;
-      display: block;
-    }
-
-    .page {
-      display: none;
-      animation: fadeInUp 0.5s ease-out;
-    }
-
-    .page.active {
-      display: block;
-    }
+    .page-container { flex: 1; display: block; }
+    .page { display: none; animation: fadeInUp 0.5s ease-out; }
+    .page.active { display: block; }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -276,10 +255,7 @@
       50% { transform: translate(-5%, -5%) rotate(5deg); }
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-content { position: relative; z-index: 1; }
 
     .hero-logo {
       width: 120px;
@@ -300,16 +276,9 @@
       50% { box-shadow: 0 0 60px rgba(255,255,255,0.2); }
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-    }
+    .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
     .hero h1 span { color: #ffd54f; }
-    .hero .subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
+    .hero .subtitle { font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9; }
     .hero .btn { margin: 0 0.5rem; }
 
     .hero-features {
@@ -353,11 +322,7 @@
     .about-text p { margin-bottom: 1.2rem; color: #555; }
 
     /* ===== COURSES ===== */
-    .courses {
-      padding: 80px 0;
-      background: var(--light);
-    }
-
+    .courses { padding: 80px 0; background: var(--light); }
     .course-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -377,11 +342,7 @@
       transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
     }
-    .course-card .icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
+    .course-card .icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
     .course-card h3 { color: var(--primary); }
     .course-card p { color: #666; margin-bottom: 1rem; }
     .course-card .course-tags {
@@ -398,17 +359,12 @@
       color: var(--primary);
       font-weight: 500;
     }
-
     .course-card.data { border-top-color: #0d47a1; }
     .course-card.research { border-top-color: #2e7d32; }
     .course-card.design { border-top-color: #ff6f00; }
 
-    /* ===== QUIZ SECTION ===== */
-    .quiz-section {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
+    /* ===== QUIZ ===== */
+    .quiz-section { padding: 80px 0; background: var(--white); }
     .quiz-container {
       max-width: 700px;
       margin: 0 auto;
@@ -417,19 +373,13 @@
       padding: 2.5rem;
       box-shadow: var(--shadow);
     }
-
     .quiz-question {
       font-size: 1.3rem;
       font-weight: 600;
       color: var(--primary);
       margin-bottom: 1.5rem;
     }
-
-    .quiz-options {
-      display: grid;
-      gap: 0.8rem;
-    }
-
+    .quiz-options { display: grid; gap: 0.8rem; }
     .quiz-options label {
       display: flex;
       align-items: center;
@@ -458,7 +408,6 @@
       border-color: var(--danger);
       background: #ffebee;
     }
-
     .quiz-result {
       margin-top: 1.5rem;
       padding: 1rem;
@@ -468,14 +417,8 @@
       display: none;
     }
     .quiz-result.show { display: block; }
-    .quiz-result.pass {
-      background: #e8f5e9;
-      color: var(--success);
-    }
-    .quiz-result.fail {
-      background: #ffebee;
-      color: var(--danger);
-    }
+    .quiz-result.pass { background: #e8f5e9; color: var(--success); }
+    .quiz-result.fail { background: #ffebee; color: var(--danger); }
 
     /* ===== CERTIFICATION ===== */
     .cert-section {
@@ -485,14 +428,12 @@
     }
     .cert-section h2 { color: var(--white); }
     .cert-section .section-subtitle { color: rgba(255,255,255,0.8); }
-
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
-
     .cert-card {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -511,20 +452,14 @@
     .cert-card p { opacity: 0.9; }
 
     /* ===== CONTACT ===== */
-    .contact {
-      padding: 80px 0;
-      background: var(--light);
-      text-align: center;
-    }
+    .contact { padding: 80px 0; background: var(--light); text-align: center; }
     .contact-wrapper { max-width: 600px; margin: 0 auto; }
-
     .contact-info {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
       margin: 2rem 0;
     }
-
     .contact-item {
       display: flex;
       align-items: center;
@@ -554,7 +489,6 @@
       justify-content: center;
       padding: 40px 20px;
     }
-
     .auth-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -563,7 +497,6 @@
       width: 100%;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
-
     .auth-card .logo {
       text-align: center;
       margin-bottom: 2rem;
@@ -576,26 +509,11 @@
       cursor: pointer;
     }
     .auth-card .logo a span { color: var(--accent); }
-    .auth-card .logo p {
-      color: #888;
-      font-size: 1rem;
-      margin-top: 0.3rem;
-    }
+    .auth-card .logo p { color: #888; font-size: 1rem; margin-top: 0.3rem; }
+    .auth-card h2 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .auth-card .auth-subtitle { text-align: center; color: #888; margin-bottom: 2rem; }
 
-    .auth-card h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-    .auth-card .auth-subtitle {
-      text-align: center;
-      color: #888;
-      margin-bottom: 2rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
+    .form-group { margin-bottom: 1.5rem; }
     .form-group label {
       display: block;
       font-weight: 600;
@@ -604,8 +522,7 @@
       font-size: 0.95rem;
     }
     .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .form-group select {
       width: 100%;
       padding: 12px 16px;
       border: 2px solid #e0e0e0;
@@ -615,19 +532,16 @@
       font-family: inherit;
     }
     .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
+    .form-group select:focus {
       outline: none;
       border-color: var(--secondary);
       box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
     }
-
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-
     .auth-footer {
       text-align: center;
       margin-top: 1.5rem;
@@ -649,16 +563,8 @@
       align-items: center;
       gap: 0.8rem;
     }
-    .alert-success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-    .alert-error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
+    .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
     /* ===== DASHBOARD ===== */
     .dashboard {
@@ -666,7 +572,6 @@
       background: var(--light);
       min-height: 80vh;
     }
-
     .dashboard-header {
       display: flex;
       justify-content: space-between;
@@ -679,7 +584,6 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-
     .dashboard-header .user-info {
       display: flex;
       align-items: center;
@@ -697,15 +601,8 @@
       font-weight: 700;
       font-size: 1.2rem;
     }
-    .dashboard-header .user-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-    .dashboard-header .user-email {
-      color: #888;
-      font-size: 0.9rem;
-    }
+    .dashboard-header .user-name { font-weight: 700; font-size: 1.1rem; color: var(--primary); }
+    .dashboard-header .user-email { color: #888; font-size: 0.9rem; }
 
     .dashboard-stats {
       display: grid;
@@ -713,7 +610,6 @@
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
-
     .stat-card {
       background: var(--white);
       padding: 1.5rem;
@@ -726,10 +622,7 @@
       font-weight: 800;
       color: var(--secondary);
     }
-    .stat-card .stat-label {
-      color: #888;
-      font-size: 0.9rem;
-    }
+    .stat-card .stat-label { color: #888; font-size: 0.9rem; }
 
     .welcome-banner {
       background: var(--gradient);
@@ -739,10 +632,7 @@
       margin-bottom: 2rem;
       text-align: center;
     }
-    .welcome-banner h2 {
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
+    .welcome-banner h2 { color: var(--white); margin-bottom: 0.5rem; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -791,14 +681,10 @@
         gap: 2rem;
       }
       .about-image img { height: 280px; }
-
       .course-grid { grid-template-columns: 1fr; }
-
       .contact-info { grid-template-columns: 1fr; }
-
       .auth-card { padding: 2rem; }
       .form-row { grid-template-columns: 1fr; }
-
       .dashboard-header { flex-direction: column; text-align: center; }
       .dashboard-stats { grid-template-columns: 1fr 1fr; }
       .quiz-container { padding: 1.5rem; }
@@ -918,51 +804,39 @@
           <h2>Our Courses</h2>
           <p class="section-subtitle">Choose your learning path and start your journey today</p>
           <div class="course-grid">
-
-            <!-- Data Analysis -->
             <div class="course-card data">
               <span class="icon">📊</span>
               <h3>Data Analysis</h3>
-              <p>Master the art of data analysis with industry-standard tools</p>
+              <p>Master data analysis with Excel, Power BI & SQL</p>
               <div class="course-tags">
-                <span>Excel</span>
-                <span>Power BI</span>
-                <span>SQL</span>
+                <span>Excel</span><span>Power BI</span><span>SQL</span>
               </div>
               <div style="margin-top: 1.5rem;">
                 <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-
-            <!-- Academic Research -->
             <div class="course-card research">
               <span class="icon">🔬</span>
               <h3>Academic Research</h3>
-              <p>Develop research skills for academic excellence and professional writing</p>
+              <p>Develop research & technical writing skills</p>
               <div class="course-tags">
-                <span>Science Research</span>
-                <span>Technical Writing</span>
+                <span>Science Research</span><span>Technical Writing</span>
               </div>
               <div style="margin-top: 1.5rem;">
                 <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-
-            <!-- Graphic Design -->
             <div class="course-card design">
               <span class="icon">🎨</span>
               <h3>Graphic Design</h3>
-              <p>Create stunning visuals with professional design tools</p>
+              <p>Create stunning visuals with PixelLab, Canva & AI</p>
               <div class="course-tags">
-                <span>PixelLab</span>
-                <span>Canva</span>
-                <span>AI Tools</span>
+                <span>PixelLab</span><span>Canva</span><span>AI Tools</span>
               </div>
               <div style="margin-top: 1.5rem;">
                 <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -973,14 +847,13 @@
       </footer>
     </div>
 
-    <!-- ===== LEARNING PAGE (Quiz + Certification) ===== -->
+    <!-- ===== LEARNING PAGE ===== -->
     <div class="page" id="page-learning">
       <!-- Quiz Section -->
       <section class="quiz-section" style="padding-top: 40px;">
         <div class="container">
           <h2>📝 Knowledge Check</h2>
           <p class="section-subtitle">Test your understanding with our interactive quiz</p>
-          
           <div class="quiz-container">
             <div id="quizContainer">
               <div class="quiz-question" id="quizQuestion">Loading question...</div>
@@ -1003,19 +876,19 @@
               <span class="icon">📊</span>
               <h3>Data Analysis</h3>
               <p>Excel, Power BI & SQL</p>
-              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Data Analysis Specialist')">Claim Certificate</button>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="claimCertificate('Data Analysis Specialist')">Claim Certificate</button>
             </div>
             <div class="cert-card">
               <span class="icon">🔬</span>
               <h3>Research & Writing</h3>
               <p>Science Research & Technical Writing</p>
-              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Research & Writing Expert')">Claim Certificate</button>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="claimCertificate('Research & Writing Expert')">Claim Certificate</button>
             </div>
             <div class="cert-card">
               <span class="icon">🎨</span>
               <h3>Graphic Design</h3>
               <p>PixelLab, Canva & AI</p>
-              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Graphic Design Professional')">Claim Certificate</button>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="claimCertificate('Graphic Design Professional')">Claim Certificate</button>
             </div>
           </div>
         </div>
@@ -1030,4 +903,19 @@
     <!-- ===== CONTACT PAGE ===== -->
     <div class="page" id="page-contact">
       <section class="contact" style="padding-top: 40px;">
-       
+        <div class="container">
+          <div class="contact-wrapper">
+            <h2>📬 Get in Touch</h2>
+            <p style="font-size:1.2rem; color:#555; margin-bottom:2rem;">
+              Have questions or want to collaborate? Reach out to us!
+            </p>
+            <div class="contact-info">
+              <a href="mailto:info@mlinktech.com" class="contact-item">
+                <span class="icon">✉️</span> info@mlinktech.com
+              </a>
+              <a href="tel:+1234567890" class="contact-item">
+                <span class="icon">📞</span> +1 234 567 890
+              </a>
+              <a href="#" class="contact-item">
+                <span class="icon">📍</span> Lagos, Nigeria
+              </
