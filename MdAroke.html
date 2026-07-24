@@ -87,41 +87,100 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* full-section image blocks */
-    .hero-image {
+    /* ----- HERO SLIDESHOW (home) ----- */
+    .slideshow-container {
+      position: relative;
       width: 100%;
-      min-height: 240px;
-      background-size: cover;
-      background-position: center;
       border-radius: 28px;
+      overflow: hidden;
       margin: 1.5rem 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
-      font-size: 2.2rem;
-      font-weight: 700;
-      padding: 3rem 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: 0.3s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      background: #0b2b3d;
     }
 
-    .hero-image i {
+    .slide {
+      display: none;
+      width: 100%;
+      min-height: 280px;
+      background-size: cover;
+      background-position: center;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      color: white;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .slide.active-slide {
+      display: flex;
+    }
+
+    .slide i {
       margin-right: 18px;
       background: rgba(255,255,255,0.15);
       padding: 16px;
       border-radius: 60px;
     }
 
-    /* ----- sign-up card (home) ----- */
+    /* navigation arrows */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 14px 18px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.6rem;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      user-select: none;
+      transition: 0.2s;
+      z-index: 10;
+      border: none;
+    }
+
+    .prev { left: 16px; }
+    .next { right: 16px; }
+
+    .prev:hover, .next:hover {
+      background: #facc15;
+      color: #0b2b3d;
+    }
+
+    .dots {
+      text-align: center;
+      padding: 12px 0 4px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 14px;
+      width: 14px;
+      margin: 0 6px;
+      background: #b9c7d9;
+      border-radius: 30px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .dot.active-dot, .dot:hover {
+      background: #facc15;
+      width: 28px;
+    }
+
+    /* sign-up card */
     .signup-card {
       background: white;
       max-width: 560px;
-      margin: 2rem auto;
+      margin: 1.5rem auto 2rem;
       padding: 2rem 2.5rem;
       border-radius: 48px;
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
       text-align: center;
     }
 
@@ -166,44 +225,53 @@
       box-shadow: 0 4px 0 #b48d0e;
     }
 
-    .signup-card .btn i {
-      margin-right: 8px;
-    }
-
-    /* cards grid */
-    .grid-3 {
+    /* course cards with images */
+    .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
 
-    .card {
+    .course-card {
       background: white;
-      padding: 1.8rem 1.2rem;
       border-radius: 30px;
+      overflow: hidden;
       box-shadow: 0 10px 24px -8px rgba(0,0,0,0.08);
-      text-align: center;
       transition: 0.25s;
       border: 1px solid #e9eef3;
     }
 
-    .card:hover {
+    .course-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 24px 40px -16px #0b2b3d30;
+      box-shadow: 0 24px 40px -16px #0b2b3d40;
     }
 
-    .card i {
-      font-size: 2.8rem;
+    .course-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .course-card .card-body {
+      padding: 1.2rem 1.5rem 1.5rem;
+    }
+
+    .course-card .card-body h3 {
+      margin-bottom: 6px;
+      font-size: 1.3rem;
+    }
+
+    .course-card .card-body p {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .course-card .card-body i {
       color: #facc15;
-      background: #fef9e0;
-      padding: 16px;
-      border-radius: 60px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      margin: 10px 0 6px;
+      margin-right: 6px;
     }
 
     /* about / contact */
@@ -329,7 +397,6 @@
       color: #facc15;
     }
 
-    /* footer */
     .footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -353,27 +420,30 @@
         font-size: 0.8rem;
         padding: 0.3rem 0.7rem;
       }
-      .hero-image {
+      .slide {
         font-size: 1.4rem;
-        min-height: 180px;
+        min-height: 200px;
         padding: 1.8rem;
-        flex-wrap: wrap;
       }
       .signup-card {
         padding: 1.5rem;
       }
-      .grid-3 {
+      .course-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 480px) {
-      .grid-3 {
+      .course-grid {
         grid-template-columns: 1fr;
       }
-      .hero-image {
+      .slide {
         font-size: 1.2rem;
-        min-height: 140px;
+        min-height: 160px;
+      }
+      .prev, .next {
+        padding: 8px 12px;
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -394,8 +464,29 @@
 
 <!-- ============ HOME PAGE ============ -->
 <section id="home" class="page active">
-  <div class="hero-image" style="background-image: linear-gradient(135deg, #0b2b3de0, #1e4a5fe0), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=300&fit=crop&crop=center');">
-    <i class="fas fa-chalkboard-teacher"></i> MlinkTech Academy · Learn & Grow
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slide active-slide" style="background-image: linear-gradient(135deg, #0b2b3de0, #1e4a5fe0), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=400&fit=crop&crop=center');">
+      <i class="fas fa-chalkboard-teacher"></i> Learn Data Analysis
+    </div>
+    <div class="slide" style="background-image: linear-gradient(135deg, #1e3a5fd0, #0b2b3dd0), url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=400&fit=crop&crop=center');">
+      <i class="fas fa-palette"></i> Master Graphic Design
+    </div>
+    <div class="slide" style="background-image: linear-gradient(135deg, #0b2b3dd0, #1e4a5fd0), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop&crop=center');">
+      <i class="fas fa-microscope"></i> Academic Research
+    </div>
+    <div class="slide" style="background-image: linear-gradient(135deg, #1e4a5fd0, #0b2b3dd0), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&crop=center');">
+      <i class="fas fa-certificate"></i> Earn Certificates
+    </div>
+
+    <button class="prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="dots">
+    <span class="dot active-dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
   </div>
 
   <!-- sign-up section -->
@@ -409,15 +500,15 @@
     <p style="margin-top: 12px; font-size: 0.9rem; color: #64748b;">Already have an account? <a href="#" style="color:#0b2b3d; font-weight:600;">Log in</a></p>
   </div>
 
-  <div style="text-align: center; margin: 2rem 0 1rem;">
-    <p style="font-size: 1.2rem; color: #1e293b;"><i class="fas fa-star" style="color: #facc15;"></i> Start your journey with data, design & research</p>
+  <div style="text-align: center; margin: 1rem 0 0.5rem;">
+    <p style="font-size: 1.2rem; color: #1e293b;"><i class="fas fa-star" style="color: #facc15;"></i> Data · Design · Research</p>
   </div>
 </section>
 
 <!-- ============ ABOUT PAGE ============ -->
 <section id="about" class="page">
-  <div class="hero-image" style="background-image: linear-gradient(145deg, #1e3a5fcc, #0b2b3dcc), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=300&fit=crop&crop=center');">
-    <i class="fas fa-users"></i> About MlinkTech
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=300&fit=crop&crop=center" alt="about" style="width:100%; height:220px; object-fit:cover;" />
   </div>
   <div class="about-grid">
     <div class="about-text">
@@ -435,24 +526,61 @@
 
 <!-- ============ COURSES PAGE ============ -->
 <section id="courses" class="page">
-  <div class="hero-image" style="background-image: linear-gradient(145deg, #0b2b3dcc, #1e4a5fcc), url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=300&fit=crop&crop=center');">
-    <i class="fas fa-book-open"></i> Our Courses
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=300&fit=crop&crop=center" alt="courses banner" style="width:100%; height:220px; object-fit:cover;" />
   </div>
-  <div class="grid-3">
-    <div class="card"><i class="fas fa-chart-pie"></i><h3>Data Analysis</h3><p>Python, SQL, Tableau, statistics & real-world projects.</p></div>
-    <div class="card"><i class="fas fa-palette"></i><h3>Graphic Design</h3><p>Photoshop, Illustrator, Figma, branding & UI/UX.</p></div>
-    <div class="card"><i class="fas fa-microscope"></i><h3>Academy Research</h3><p>Research methods, academic writing, literature review.</p></div>
-    <div class="card"><i class="fas fa-database"></i><h3>Data Science</h3><p>Machine learning, predictive analytics, big data.</p></div>
-    <div class="card"><i class="fas fa-video"></i><h3>Motion Design</h3><p>After Effects, animation, video editing.</p></div>
-    <div class="card"><i class="fas fa-file-alt"></i><h3>Research Paper</h3><p>Structure, citation, publication strategies.</p></div>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Data Analysis" />
+      <div class="card-body">
+        <h3><i class="fas fa-chart-pie"></i> Data Analysis</h3>
+        <p>Python, SQL, Tableau, statistics & real-world projects.</p>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop&crop=center" alt="Graphic Design" />
+      <div class="card-body">
+        <h3><i class="fas fa-palette"></i> Graphic Design</h3>
+        <p>Photoshop, Illustrator, Figma, branding & UI/UX.</p>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=400&h=200&fit=crop&crop=center" alt="Academy Research" />
+      <div class="card-body">
+        <h3><i class="fas fa-microscope"></i> Academy Research</h3>
+        <p>Research methods, academic writing, literature review.</p>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Data Science" />
+      <div class="card-body">
+        <h3><i class="fas fa-database"></i> Data Science</h3>
+        <p>Machine learning, predictive analytics, big data.</p>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=200&fit=crop&crop=center" alt="Motion Design" />
+      <div class="card-body">
+        <h3><i class="fas fa-video"></i> Motion Design</h3>
+        <p>After Effects, animation, video editing.</p>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&h=200&fit=crop&crop=center" alt="Research Paper" />
+      <div class="card-body">
+        <h3><i class="fas fa-file-alt"></i> Research Paper</h3>
+        <p>Structure, citation, publication strategies.</p>
+      </div>
+    </div>
   </div>
   <p style="text-align:center; color:#475569;"><i class="fas fa-check-circle" style="color:#facc15;"></i> All courses include quizzes, projects & certificate</p>
 </section>
 
 <!-- ============ QUIZ & CERTIFICATE PAGE ============ -->
 <section id="quiz" class="page">
-  <div class="hero-image" style="background-image: linear-gradient(145deg, #1e3a5fcc, #0b2b3dcc), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0d?w=800&h=300&fit=crop&crop=center');">
-    <i class="fas fa-certificate"></i> Quiz & Certificate
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0d?w=1200&h=300&fit=crop&crop=center" alt="quiz banner" style="width:100%; height:220px; object-fit:cover;" />
   </div>
 
   <div class="quiz-box">
@@ -475,8 +603,8 @@
 
 <!-- ============ CONTACT PAGE ============ -->
 <section id="contact" class="page">
-  <div class="hero-image" style="background-image: linear-gradient(145deg, #0b2b3dcc, #1e4a5fcc), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&h=300&fit=crop&crop=center');">
-    <i class="fas fa-phone-alt"></i> Contact us
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+    <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=300&fit=crop&crop=center" alt="contact" style="width:100%; height:220px; object-fit:cover;" />
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;">
     <div class="contact-info" style="flex:1; min-width:260px;">
@@ -500,7 +628,7 @@
 </footer>
 
 <script>
-  // navigation: show/hide pages + active link
+  // ----- navigation -----
   const links = document.querySelectorAll('.nav-links a');
   const pages = {
     home: document.getElementById('home'),
@@ -511,11 +639,8 @@
   };
 
   function showPage(pageId) {
-    // hide all
     Object.values(pages).forEach(p => p.classList.remove('active'));
-    // show target
     if (pages[pageId]) pages[pageId].classList.add('active');
-    // update nav active class
     links.forEach(link => {
       link.classList.remove('active');
       if (link.dataset.page === pageId) link.classList.add('active');
@@ -530,7 +655,36 @@
     });
   });
 
-  // (optional) default home already active
+  // ----- slideshow -----
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index >= slides.length) slideIndex = 0;
+    if (index < 0) slideIndex = slides.length - 1;
+    slides.forEach((s, i) => {
+      s.classList.toggle('active-slide', i === slideIndex);
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active-dot', i === slideIndex);
+    });
+  }
+
+  function changeSlide(step) {
+    showSlide(slideIndex += step);
+  }
+
+  function currentSlide(index) {
+    slideIndex = index;
+    showSlide(slideIndex);
+  }
+
+  // auto slide every 5s
+  setInterval(() => { changeSlide(1); }, 5000);
+
+  // initial
+  showSlide(0);
 </script>
 </body>
 </html>
