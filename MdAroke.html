@@ -5,17 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MdAroke - Portfolio</title>
   
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Welcome to MdAroke's portfolio website" />
-  <meta name="author" content="MdAroke" />
-  
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="MdAroke - Portfolio" />
-  <meta property="og:description" content="Welcome to my portfolio website" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mdaroke.github.io" />
-  
   <style>
+    /* ============================================
+       ALL STYLES MERGED INTO ONE FILE
+       ============================================ */
+    
     /* ===== RESET & BASE ===== */
     *,
     *::before,
@@ -29,14 +23,17 @@
       --primary: #2c3e50;
       --secondary: #3498db;
       --accent: #e74c3c;
+      --success: #2ecc71;
+      --warning: #f39c12;
       --text: #333;
       --light: #f8f9fa;
       --dark: #1a252f;
       --white: #ffffff;
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --radius: 12px;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
     html {
@@ -49,6 +46,9 @@
       color: var(--text);
       background: var(--white);
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
@@ -75,6 +75,7 @@
       cursor: pointer;
       transition: var(--transition);
       letter-spacing: 0.5px;
+      text-align: center;
     }
 
     .btn-primary {
@@ -98,6 +99,16 @@
       box-shadow: var(--shadow-hover);
     }
 
+    .btn-success {
+      background: var(--success);
+      color: var(--white);
+    }
+    .btn-success:hover {
+      background: #27ae60;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+    }
+
     .btn-outline {
       background: transparent;
       color: var(--secondary);
@@ -109,13 +120,31 @@
       transform: translateY(-3px);
     }
 
+    .btn-danger {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-danger:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-sm {
+      padding: 8px 20px;
+      font-size: 0.85rem;
+    }
+
     /* ===== NAVIGATION ===== */
     .navbar {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
-      position: fixed;
-      width: 100%;
+      position: sticky;
       top: 0;
       z-index: 1000;
       padding: 0.8rem 0;
@@ -134,13 +163,14 @@
       color: var(--primary);
       text-decoration: none;
       letter-spacing: -0.5px;
+      cursor: pointer;
     }
     .nav-brand a span { color: var(--secondary); }
 
     .nav-menu {
       display: flex;
       list-style: none;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
 
@@ -150,6 +180,7 @@
       font-weight: 500;
       transition: var(--transition);
       position: relative;
+      cursor: pointer;
     }
     .nav-menu a::after {
       content: '';
@@ -164,6 +195,17 @@
     .nav-menu a:hover::after,
     .nav-menu a.active::after { width: 100%; }
     .nav-menu a:hover { color: var(--secondary); }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .nav-actions .btn {
+      padding: 8px 20px;
+      font-size: 0.85rem;
+    }
 
     .hamburger {
       display: none;
@@ -186,18 +228,38 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== PAGE CONTAINER ===== */
+    .page-container {
+      flex: 1;
+      display: block;
+    }
+
+    .page {
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== HERO ===== */
     .hero {
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient);
       color: var(--white);
-      padding-top: 80px;
       position: relative;
       overflow: hidden;
+      padding: 80px 0;
     }
 
     .hero::before {
@@ -244,45 +306,33 @@
     .hero h1 {
       font-size: 4rem;
       margin-bottom: 0.5rem;
-      animation: fadeInUp 1s ease-out;
     }
     .hero .subtitle {
       font-size: 1.5rem;
       margin-bottom: 2rem;
       opacity: 0.9;
-      animation: fadeInUp 1s ease-out 0.2s both;
     }
-    .hero .btn { animation: fadeInUp 1s ease-out 0.4s both; }
 
     .hero-social {
       display: flex;
       gap: 1.5rem;
       justify-content: center;
       margin-top: 2rem;
-      animation: fadeInUp 1s ease-out 0.6s both;
     }
     .hero-social a {
       color: var(--white);
       font-size: 1.8rem;
       transition: var(--transition);
       opacity: 0.8;
+      text-decoration: none;
     }
     .hero-social a:hover {
       opacity: 1;
       transform: translateY(-3px);
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about {
-      padding: 100px 0;
-      background: var(--light);
-    }
-
+    /* ===== ABOUT ===== */
+    .about { padding: 80px 0; background: var(--light); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -303,11 +353,7 @@
     }
     .about-image:hover img { transform: scale(1.03); }
 
-    .about-text h3 {
-      color: var(--secondary);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+    .about-text h3 { color: var(--secondary); font-size: 1.8rem; margin-bottom: 1rem; }
     .about-text p { margin-bottom: 1.2rem; color: #555; }
 
     .skill-tags {
@@ -334,13 +380,10 @@
     }
 
     /* ===== PROJECTS ===== */
-    .projects {
-      padding: 100px 0;
-    }
-
+    .projects { padding: 80px 0; }
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2.5rem;
     }
 
@@ -368,9 +411,7 @@
     }
     .project-card:hover .project-image img { transform: scale(1.05); }
 
-    .project-body {
-      padding: 1.8rem;
-    }
+    .project-body { padding: 1.8rem; }
     .project-body h3 { color: var(--primary); }
     .project-body p { color: #666; margin-bottom: 1.2rem; }
     .project-tags {
@@ -390,16 +431,8 @@
     .project-body .btn { padding: 10px 28px; font-size: 0.9rem; }
 
     /* ===== CONTACT ===== */
-    .contact {
-      padding: 100px 0;
-      background: var(--light);
-      text-align: center;
-    }
-
-    .contact-wrapper {
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    .contact { padding: 80px 0; background: var(--light); text-align: center; }
+    .contact-wrapper { max-width: 600px; margin: 0 auto; }
 
     .contact-image {
       width: 120px;
@@ -415,12 +448,7 @@
       object-fit: cover;
     }
 
-    .contact p {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 2rem;
-    }
-
+    .contact p { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
     .contact-links {
       display: flex;
       gap: 1.5rem;
@@ -448,12 +476,241 @@
     }
     .contact-item .icon { font-size: 1.4rem; }
 
+    /* ===== AUTH PAGES ===== */
+    .auth-page {
+      min-height: 80vh;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .auth-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 3rem;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .auth-card .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .auth-card .logo a {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .auth-card .logo a span { color: var(--secondary); }
+    .auth-card .logo p {
+      color: #888;
+      font-size: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    .auth-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    .auth-card .auth-subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group .input-icon {
+      position: relative;
+    }
+    .form-group .input-icon input {
+      padding-left: 44px;
+    }
+    .form-group .input-icon .icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      opacity: 0.5;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #888;
+    }
+    .auth-footer a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .auth-footer a:hover { text-decoration: underline; }
+
+    .alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .alert-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    /* ===== DASHBOARD ===== */
+    .dashboard {
+      padding: 40px 0;
+      background: var(--light);
+      min-height: 80vh;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .dashboard-header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .dashboard-header .avatar-sm {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .dashboard-header .avatar-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .dashboard-header .user-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    .dashboard-header .user-email {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .stat-card .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+    .stat-card .stat-label {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .dashboard-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .welcome-banner {
+      background: var(--gradient);
+      color: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .welcome-banner h2 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--primary);
       color: var(--white);
       text-align: center;
       padding: 2.5rem 0;
+      margin-top: auto;
     }
     footer p { opacity: 0.8; }
 
@@ -481,6 +738,8 @@
       }
       .nav-menu.active { display: flex; }
       .hamburger { display: flex; }
+      .nav-actions { flex-direction: column; width: 100%; }
+      .nav-actions .btn { width: 100%; text-align: center; }
 
       .hero h1 { font-size: 2.4rem; }
       .hero .subtitle { font-size: 1.2rem; }
@@ -496,6 +755,12 @@
 
       .contact-links { flex-direction: column; align-items: center; }
       .contact-item { width: 100%; justify-content: center; }
+
+      .auth-card { padding: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .dashboard-header { flex-direction: column; text-align: center; }
+      .dashboard-stats { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -503,240 +768,216 @@
       h2 { font-size: 1.8rem; }
       .container { padding: 0 16px; }
       .btn { padding: 12px 28px; font-size: 0.9rem; }
+      .dashboard-stats { grid-template-columns: 1fr; }
+      .auth-card { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="navbar">
+  <!-- ============================================
+  NAVIGATION
+  ============================================ -->
+  <nav class="navbar" id="mainNav">
     <div class="container">
       <div class="nav-brand">
-        <a href="#home">Md<span>Aroke</span></a>
+        <a onclick="navigateTo('home')">Md<span>Aroke</span></a>
       </div>
-      <ul class="nav-menu">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-menu" id="navMenu">
+        <li><a onclick="navigateTo('home')" data-page="home">Home</a></li>
+        <li><a onclick="navigateTo('about')" data-page="about">About</a></li>
+        <li><a onclick="navigateTo('projects')" data-page="projects">Projects</a></li>
+        <li><a onclick="navigateTo('contact')" data-page="contact">Contact</a></li>
       </ul>
-      <button class="hamburger" aria-label="Toggle menu">
+      <div class="nav-actions" id="navActions">
+        <a onclick="navigateTo('login')" class="btn btn-outline btn-sm">Login</a>
+        <a onclick="navigateTo('signup')" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section id="home" class="hero">
-    <div class="container hero-content">
-      <div class="hero-avatar">
-        <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=667eea&color=fff&bold=true" alt="MdAroke Avatar">
-      </div>
-      <h1>Hi, I'm <span style="color:#f1c40f;">MdAroke</span></h1>
-      <p class="subtitle">🚀 Developer · Creator · Problem Solver</p>
-      <a href="#projects" class="btn btn-primary">View My Work</a>
-      <div class="hero-social">
-        <a href="https://github.com/MdAroke" target="_blank" aria-label="GitHub">🐙</a>
-        <a href="#" target="_blank" aria-label="LinkedIn">💼</a>
-        <a href="#" target="_blank" aria-label="Twitter">🐦</a>
-        <a href="mailto:mdaroke@example.com" aria-label="Email">✉️</a>
-      </div>
-    </div>
-  </section>
+  <!-- ============================================
+  PAGE CONTAINER
+  ============================================ -->
+  <div class="page-container">
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <div class="about-grid">
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop&crop=center" alt="Workspace">
-        </div>
-        <div class="about-text">
-          <h3>Passionate Developer</h3>
-          <p>
-            Hello! I'm <strong>MdAroke</strong>, a passionate developer with a love for creating
-            beautiful, functional, and user-friendly web experiences.
-          </p>
-          <p>
-            I specialize in front-end development and enjoy working with modern technologies
-            like React, JavaScript, and CSS to bring ideas to life. I believe in writing
-            clean, maintainable code and constantly learning new things.
-          </p>
-          <div class="skill-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>React</span>
-            <span>Git</span>
-            <span>Node.js</span>
-            <span>Tailwind</span>
+    <!-- ===== HOME PAGE ===== -->
+    <div class="page active" id="page-home">
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-avatar">
+            <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=667eea&color=fff&bold=true" alt="MdAroke Avatar">
+          </div>
+          <h1>Hi, I'm <span style="color:#f1c40f;">MdAroke</span></h1>
+          <p class="subtitle">🚀 Developer · Creator · Problem Solver</p>
+          <a onclick="navigateTo('projects')" class="btn btn-primary">View My Work</a>
+          <div class="hero-social">
+            <a href="https://github.com/MdAroke" target="_blank" aria-label="GitHub">🐙</a>
+            <a href="#" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+            <a href="mailto:mdaroke@example.com" aria-label="Email">✉️</a>
           </div>
         </div>
-      </div>
+      </section>
+      <footer>
+        <div class="container">
+          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
+        </div>
+      </footer>
     </div>
-  </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2>My Projects</h2>
-      <p class="section-subtitle">Here are some of the projects I've worked on</p>
-      <div class="project-grid">
-
-        <!-- Project 1 -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&crop=center" alt="E-Commerce Project">
-          </div>
-          <div class="project-body">
-            <h3>🛒 E-Commerce Platform</h3>
-            <p>Full-featured online store with cart, payments, and admin dashboard.</p>
-            <div class="project-tags">
-              <span>React</span><span>Node.js</span><span>MongoDB</span>
+    <!-- ===== ABOUT PAGE ===== -->
+    <div class="page" id="page-about">
+      <section class="about" style="padding-top: 40px;">
+        <div class="container">
+          <h2>About Me</h2>
+          <div class="about-grid">
+            <div class="about-image">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop&crop=center" alt="Workspace">
             </div>
-            <a href="#" class="btn btn-secondary">View Project →</a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=center" alt="Dashboard Project">
-          </div>
-          <div class="project-body">
-            <h3>📊 Analytics Dashboard</h3>
-            <p>Real-time data visualization dashboard with interactive charts and metrics.</p>
-            <div class="project-tags">
-              <span>Vue.js</span><span>D3.js</span><span>Firebase</span>
+            <div class="about-text">
+              <h3>Passionate Developer</h3>
+              <p>
+                Hello! I'm <strong>MdAroke</strong>, a passionate developer with a love for creating
+                beautiful, functional, and user-friendly web experiences.
+              </p>
+              <p>
+                I specialize in front-end development and enjoy working with modern technologies
+                like React, JavaScript, and CSS to bring ideas to life. I believe in writing
+                clean, maintainable code and constantly learning new things.
+              </p>
+              <p>
+                When I'm not coding, I enjoy exploring new technologies, contributing to open-source
+                projects, and sharing knowledge with the developer community.
+              </p>
+              <div class="skill-tags">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                <span>React</span><span>Git</span><span>Node.js</span>
+                <span>Tailwind</span><span>TypeScript</span>
+              </div>
+              <div style="margin-top: 2rem;">
+                <a onclick="navigateTo('contact')" class="btn btn-primary">Get in Touch</a>
+              </div>
             </div>
-            <a href="#" class="btn btn-secondary">View Project →</a>
           </div>
         </div>
+      </section>
+      <footer>
+        <div class="container">
+          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
+        </div>
+      </footer>
+    </div>
 
-        <!-- Project 3 -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=300&fit=crop&crop=center" alt="Task Manager Project">
-          </div>
-          <div class="project-body">
-            <h3>✅ Task Manager</h3>
-            <p>Collaborative task management app with real-time updates and team features.</p>
-            <div class="project-tags">
-              <span>React</span><span>Socket.io</span><span>PostgreSQL</span>
+    <!-- ===== PROJECTS PAGE ===== -->
+    <div class="page" id="page-projects">
+      <section class="projects" style="padding-top: 40px;">
+        <div class="container">
+          <h2>My Projects</h2>
+          <p class="section-subtitle">Here are some of the projects I've worked on</p>
+          <div class="project-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&crop=center" alt="E-Commerce">
+              </div>
+              <div class="project-body">
+                <h3>🛒 E-Commerce Platform</h3>
+                <p>Full-featured online store with cart, payments, and admin dashboard.</p>
+                <div class="project-tags"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
             </div>
-            <a href="#" class="btn btn-secondary">View Project →</a>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=center" alt="Dashboard">
+              </div>
+              <div class="project-body">
+                <h3>📊 Analytics Dashboard</h3>
+                <p>Real-time data visualization dashboard with interactive charts and metrics.</p>
+                <div class="project-tags"><span>Vue.js</span><span>D3.js</span><span>Firebase</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=300&fit=crop&crop=center" alt="Task Manager">
+              </div>
+              <div class="project-body">
+                <h3>✅ Task Manager</h3>
+                <p>Collaborative task management app with real-time updates and team features.</p>
+                <div class="project-tags"><span>React</span><span>Socket.io</span><span>PostgreSQL</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=600&h=300&fit=crop&crop=center" alt="Weather App">
+              </div>
+              <div class="project-body">
+                <h3>🌤️ Weather App</h3>
+                <p>Real-time weather forecasting app with location-based updates.</p>
+                <div class="project-tags"><span>JavaScript</span><span>API</span><span>CSS</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=300&fit=crop&crop=center" alt="Blog Platform">
+              </div>
+              <div class="project-body">
+                <h3>📝 Blog Platform</h3>
+                <p>Full-stack blogging platform with authentication, comments, and markdown.</p>
+                <div class="project-tags"><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=center" alt="Portfolio">
+              </div>
+              <div class="project-body">
+                <h3>🎨 Portfolio Builder</h3>
+                <p>Drag-and-drop portfolio builder for creatives with customizable templates.</p>
+                <div class="project-tags"><span>React</span><span>Tailwind</span><span>Framer</span></div>
+                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              </div>
+            </div>
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-image">
-          <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=3498db&color=fff&bold=true" alt="MdAroke Contact">
+      </section>
+      <footer>
+        <div class="container">
+          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
         </div>
-        <h2>Get in Touch</h2>
-        <p>📬 Have a question or want to collaborate? Feel free to reach out!</p>
-        <div class="contact-links">
-          <a href="mailto:mdaroke@example.com" class="contact-item">
-            <span class="icon">✉️</span> Email Me
-          </a>
-          <a href="https://github.com/MdAroke" target="_blank" class="contact-item">
-            <span class="icon">🐙</span> GitHub
-          </a>
-          <a href="#" target="_blank" class="contact-item">
-            <span class="icon">💼</span> LinkedIn
-          </a>
-          <a href="#" target="_blank" class="contact-item">
-            <span class="icon">🐦</span> Twitter
-          </a>
-        </div>
-      </div>
+      </footer>
     </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
-    </div>
-  </footer>
-
-  <!-- ===== JAVASCRIPT ===== -->
-  <script>
-    (function() {
-      'use strict';
-
-      // ——— Mobile Menu Toggle ———
-      const hamburger = document.querySelector('.hamburger');
-      const navMenu = document.querySelector('.nav-menu');
-
-      if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-          this.classList.toggle('active');
-          navMenu.classList.toggle('active');
-        });
-
-        // Close menu on link click
-        navMenu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-          });
-        });
-      }
-
-      // ——— Active Nav Link on Scroll ———
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-menu a');
-
-      function updateActiveLink() {
-        let current = '';
-        const scrollPos = window.scrollY + 120;
-
-        sections.forEach(section => {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-          }
-        });
-      }
-
-      window.addEventListener('scroll', updateActiveLink);
-      window.addEventListener('load', updateActiveLink);
-
-      // ——— Smooth Scroll ———
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          const target = document.querySelector(targetId);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-
-      // ——— Console ———
-      console.log('🚀 Welcome to MdAroke\'s Portfolio!');
-      console.log('✨ Built with love and code.');
-
-    })();
-  </script>
-
-</body>
-</html>
+    <!-- ===== CONTACT PAGE ===== -->
+    <div class="page" id="page-contact">
+      <section class="contact" style="padding-top: 40px;">
+        <div class="container">
+          <div class="contact-wrapper">
+            <div class="contact-image">
+              <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=3498db&color=fff&bold=true" alt="MdAroke Contact">
+            </div>
+            <h2>Get in Touch</h2>
+            <p>📬 Have a question or want to collaborate? Feel free to reach out!</p>
+            <div class="contact-links">
+              <a href="mailto:mdaroke@example.com" class="contact-item">
+                <span class="icon">✉️</span> Email Me
+              </a>
+              <a href="https://github.com/MdAroke" target="_blank" class="contact-item">
+                <span class="icon">🐙</span> GitHub
+              </a>
+              <a href="#" target="_blank" class="contact-item">
+                <span class="icon">💼</span> LinkedIn
+              </a>
+              <a href="#" target="_blank" class="contact-item">
+                <span class="icon">🐦</span> Twitter
+              </a>
+            </div>
+            <div style="margin-top: 2rem; padding: 2rem; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);">
+              <h3 style="color: var(--primary);">Send a Message</h3>
