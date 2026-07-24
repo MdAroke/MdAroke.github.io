@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MdAroke - Portfolio</title>
+  <title>MlinkTech - Online Learning</title>
   
   <style>
     /* ============================================
-       ALL STYLES MERGED INTO ONE FILE
+       COMPLETE STYLES - MlinkTech Class
        ============================================ */
     
     /* ===== RESET & BASE ===== */
@@ -20,20 +20,22 @@
     }
 
     :root {
-      --primary: #2c3e50;
-      --secondary: #3498db;
-      --accent: #e74c3c;
-      --success: #2ecc71;
-      --warning: #f39c12;
+      --primary: #1a237e;
+      --secondary: #0d47a1;
+      --accent: #ff6f00;
+      --success: #2e7d32;
+      --warning: #f57c00;
+      --danger: #c62828;
       --text: #333;
-      --light: #f8f9fa;
-      --dark: #1a252f;
+      --light: #f5f7fa;
+      --dark: #1a1a2e;
       --white: #ffffff;
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --radius: 12px;
-      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient: linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #01579b 100%);
+      --gradient-warm: linear-gradient(135deg, #ff6f00 0%, #f57c00 100%);
     }
 
     html {
@@ -44,7 +46,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       line-height: 1.7;
       color: var(--text);
-      background: var(--white);
+      background: var(--light);
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
@@ -79,24 +81,23 @@
     }
 
     .btn-primary {
-      background: var(--secondary);
+      background: var(--gradient);
       color: var(--white);
-      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
     }
     .btn-primary:hover {
-      background: #2980b9;
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.4);
     }
 
     .btn-secondary {
-      background: var(--primary);
+      background: var(--accent);
       color: var(--white);
     }
     .btn-secondary:hover {
-      background: var(--dark);
+      background: #e65100;
       transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
+      box-shadow: 0 8px 25px rgba(255, 111, 0, 0.4);
     }
 
     .btn-success {
@@ -104,9 +105,8 @@
       color: var(--white);
     }
     .btn-success:hover {
-      background: #27ae60;
+      background: #1b5e20;
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
     }
 
     .btn-outline {
@@ -121,11 +121,11 @@
     }
 
     .btn-danger {
-      background: var(--accent);
+      background: var(--danger);
       color: var(--white);
     }
     .btn-danger:hover {
-      background: #c0392b;
+      background: #b71c1c;
       transform: translateY(-3px);
     }
 
@@ -165,7 +165,7 @@
       letter-spacing: -0.5px;
       cursor: pointer;
     }
-    .nav-brand a span { color: var(--secondary); }
+    .nav-brand a span { color: var(--accent); }
 
     .nav-menu {
       display: flex;
@@ -189,12 +189,12 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--secondary);
+      background: var(--accent);
       transition: var(--transition);
     }
     .nav-menu a:hover::after,
     .nav-menu a.active::after { width: 100%; }
-    .nav-menu a:hover { color: var(--secondary); }
+    .nav-menu a:hover { color: var(--accent); }
 
     .nav-actions {
       display: flex;
@@ -250,7 +250,7 @@
 
     /* ===== HERO ===== */
     .hero {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -281,58 +281,54 @@
       z-index: 1;
     }
 
-    .hero-avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid rgba(255,255,255,0.3);
+    .hero-logo {
+      width: 120px;
+      height: 120px;
       margin: 0 auto 2rem;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      border: 3px solid rgba(255,255,255,0.3);
       animation: pulse 3s ease-in-out infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 40px rgba(255,255,255,0.2); }
-      50% { box-shadow: 0 0 60px rgba(255,255,255,0.4); }
-    }
-
-    .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      0%, 100% { box-shadow: 0 0 40px rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 0 60px rgba(255,255,255,0.2); }
     }
 
     .hero h1 {
       font-size: 4rem;
       margin-bottom: 0.5rem;
     }
+    .hero h1 span { color: #ffd54f; }
     .hero .subtitle {
       font-size: 1.5rem;
       margin-bottom: 2rem;
       opacity: 0.9;
     }
+    .hero .btn { margin: 0 0.5rem; }
 
-    .hero-social {
+    .hero-features {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
     }
-    .hero-social a {
-      color: var(--white);
-      font-size: 1.8rem;
-      transition: var(--transition);
-      opacity: 0.8;
-      text-decoration: none;
-    }
-    .hero-social a:hover {
-      opacity: 1;
-      transform: translateY(-3px);
+    .hero-features span {
+      background: rgba(255,255,255,0.15);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(5px);
     }
 
     /* ===== ABOUT ===== */
-    .about { padding: 80px 0; background: var(--light); }
+    .about { padding: 80px 0; background: var(--white); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -356,71 +352,45 @@
     .about-text h3 { color: var(--secondary); font-size: 1.8rem; margin-bottom: 1rem; }
     .about-text p { margin-bottom: 1.2rem; color: #555; }
 
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
-    .skill-tags span {
-      background: var(--white);
-      padding: 8px 20px;
-      border-radius: 50px;
-      border: 2px solid var(--secondary);
-      color: var(--secondary);
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-    .skill-tags span:hover {
-      background: var(--secondary);
-      color: var(--white);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    /* ===== COURSES ===== */
+    .courses {
+      padding: 80px 0;
+      background: var(--light);
     }
 
-    /* ===== PROJECTS ===== */
-    .projects { padding: 80px 0; }
-    .project-grid {
+    .course-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2.5rem;
     }
 
-    .project-card {
+    .course-card {
       background: var(--white);
       border-radius: var(--radius);
-      overflow: hidden;
+      padding: 2rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
+      border-top: 5px solid var(--secondary);
+      text-align: center;
     }
-    .project-card:hover {
+    .course-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
     }
-
-    .project-image {
-      height: 220px;
-      overflow: hidden;
+    .course-card .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
     }
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .project-card:hover .project-image img { transform: scale(1.05); }
-
-    .project-body { padding: 1.8rem; }
-    .project-body h3 { color: var(--primary); }
-    .project-body p { color: #666; margin-bottom: 1.2rem; }
-    .project-tags {
+    .course-card h3 { color: var(--primary); }
+    .course-card p { color: #666; margin-bottom: 1rem; }
+    .course-card .course-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.2rem;
+      justify-content: center;
     }
-    .project-tags span {
+    .course-card .course-tags span {
       background: var(--light);
       padding: 4px 14px;
       border-radius: 50px;
@@ -428,32 +398,131 @@
       color: var(--primary);
       font-weight: 500;
     }
-    .project-body .btn { padding: 10px 28px; font-size: 0.9rem; }
+
+    .course-card.data { border-top-color: #0d47a1; }
+    .course-card.research { border-top-color: #2e7d32; }
+    .course-card.design { border-top-color: #ff6f00; }
+
+    /* ===== QUIZ SECTION ===== */
+    .quiz-section {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .quiz-options label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 12px 18px;
+      background: var(--white);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .quiz-options label:hover {
+      border-color: var(--secondary);
+      background: #e3f2fd;
+    }
+    .quiz-options input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--secondary);
+    }
+    .quiz-options label.correct {
+      border-color: var(--success);
+      background: #e8f5e9;
+    }
+    .quiz-options label.wrong {
+      border-color: var(--danger);
+      background: #ffebee;
+    }
+
+    .quiz-result {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+    .quiz-result.show { display: block; }
+    .quiz-result.pass {
+      background: #e8f5e9;
+      color: var(--success);
+    }
+    .quiz-result.fail {
+      background: #ffebee;
+      color: var(--danger);
+    }
+
+    /* ===== CERTIFICATION ===== */
+    .cert-section {
+      padding: 80px 0;
+      background: var(--gradient);
+      color: var(--white);
+    }
+    .cert-section h2 { color: var(--white); }
+    .cert-section .section-subtitle { color: rgba(255,255,255,0.8); }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .cert-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition);
+    }
+    .cert-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.2);
+    }
+    .cert-card .icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .cert-card h3 { color: var(--white); }
+    .cert-card p { opacity: 0.9; }
 
     /* ===== CONTACT ===== */
-    .contact { padding: 80px 0; background: var(--light); text-align: center; }
+    .contact {
+      padding: 80px 0;
+      background: var(--light);
+      text-align: center;
+    }
     .contact-wrapper { max-width: 600px; margin: 0 auto; }
 
-    .contact-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 2rem;
-      overflow: hidden;
-      border: 4px solid var(--secondary);
-    }
-    .contact-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .contact p { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
-    .contact-links {
-      display: flex;
+    .contact-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      margin: 2rem 0;
     }
 
     .contact-item {
@@ -461,8 +530,8 @@
       align-items: center;
       gap: 0.8rem;
       background: var(--white);
-      padding: 12px 28px;
-      border-radius: 50px;
+      padding: 15px 20px;
+      border-radius: 8px;
       box-shadow: var(--shadow);
       text-decoration: none;
       color: var(--text);
@@ -474,7 +543,7 @@
       box-shadow: var(--shadow-hover);
       color: var(--secondary);
     }
-    .contact-item .icon { font-size: 1.4rem; }
+    .contact-item .icon { font-size: 1.5rem; }
 
     /* ===== AUTH PAGES ===== */
     .auth-page {
@@ -506,7 +575,7 @@
       text-decoration: none;
       cursor: pointer;
     }
-    .auth-card .logo a span { color: var(--secondary); }
+    .auth-card .logo a span { color: var(--accent); }
     .auth-card .logo p {
       color: #888;
       font-size: 1rem;
@@ -550,26 +619,7 @@
     .form-group textarea:focus {
       outline: none;
       border-color: var(--secondary);
-      box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .form-group .input-icon {
-      position: relative;
-    }
-    .form-group .input-icon input {
-      padding-left: 44px;
-    }
-    .form-group .input-icon .icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.2rem;
-      opacity: 0.5;
+      box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
     }
 
     .form-row {
@@ -609,11 +659,6 @@
       color: #721c24;
       border: 1px solid #f5c6cb;
     }
-    .alert-info {
-      background: #d1ecf1;
-      color: #0c5460;
-      border: 1px solid #bee5eb;
-    }
 
     /* ===== DASHBOARD ===== */
     .dashboard {
@@ -644,12 +689,13 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      overflow: hidden;
-    }
-    .dashboard-header .avatar-sm img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
     }
     .dashboard-header .user-name {
       font-weight: 700;
@@ -683,12 +729,6 @@
     .stat-card .stat-label {
       color: #888;
       font-size: 0.9rem;
-    }
-
-    .dashboard-actions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
     }
 
     .welcome-banner {
@@ -743,7 +783,8 @@
 
       .hero h1 { font-size: 2.4rem; }
       .hero .subtitle { font-size: 1.2rem; }
-      .hero-avatar { width: 120px; height: 120px; }
+      .hero-features { gap: 0.8rem; }
+      .hero-features span { font-size: 0.8rem; padding: 6px 14px; }
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -751,16 +792,16 @@
       }
       .about-image img { height: 280px; }
 
-      .project-grid { grid-template-columns: 1fr; }
+      .course-grid { grid-template-columns: 1fr; }
 
-      .contact-links { flex-direction: column; align-items: center; }
-      .contact-item { width: 100%; justify-content: center; }
+      .contact-info { grid-template-columns: 1fr; }
 
       .auth-card { padding: 2rem; }
       .form-row { grid-template-columns: 1fr; }
 
       .dashboard-header { flex-direction: column; text-align: center; }
       .dashboard-stats { grid-template-columns: 1fr 1fr; }
+      .quiz-container { padding: 1.5rem; }
     }
 
     @media (max-width: 480px) {
@@ -770,6 +811,7 @@
       .btn { padding: 12px 28px; font-size: 0.9rem; }
       .dashboard-stats { grid-template-columns: 1fr; }
       .auth-card { padding: 1.5rem; }
+      .hero-logo { width: 80px; height: 80px; font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -781,12 +823,13 @@
   <nav class="navbar" id="mainNav">
     <div class="container">
       <div class="nav-brand">
-        <a onclick="navigateTo('home')">Md<span>Aroke</span></a>
+        <a onclick="navigateTo('home')">Mlink<span>Tech</span></a>
       </div>
       <ul class="nav-menu" id="navMenu">
-        <li><a onclick="navigateTo('home')" data-page="home">Home</a></li>
+        <li><a onclick="navigateTo('home')" data-page="home" class="active">Home</a></li>
         <li><a onclick="navigateTo('about')" data-page="about">About</a></li>
-        <li><a onclick="navigateTo('projects')" data-page="projects">Projects</a></li>
+        <li><a onclick="navigateTo('courses')" data-page="courses">Courses</a></li>
+        <li><a onclick="navigateTo('learning')" data-page="learning">Learning</a></li>
         <li><a onclick="navigateTo('contact')" data-page="contact">Contact</a></li>
       </ul>
       <div class="nav-actions" id="navActions">
@@ -808,23 +851,24 @@
     <div class="page active" id="page-home">
       <section class="hero">
         <div class="container hero-content">
-          <div class="hero-avatar">
-            <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=667eea&color=fff&bold=true" alt="MdAroke Avatar">
+          <div class="hero-logo">📚</div>
+          <h1>Welcome to <span>MlinkTech</span></h1>
+          <p class="subtitle">Empowering You with Digital Skills for the Future</p>
+          <div>
+            <a onclick="navigateTo('signup')" class="btn btn-primary">Get Started Free</a>
+            <a onclick="navigateTo('courses')" class="btn btn-secondary">Explore Courses</a>
           </div>
-          <h1>Hi, I'm <span style="color:#f1c40f;">MdAroke</span></h1>
-          <p class="subtitle">🚀 Developer · Creator · Problem Solver</p>
-          <a onclick="navigateTo('projects')" class="btn btn-primary">View My Work</a>
-          <div class="hero-social">
-            <a href="https://github.com/MdAroke" target="_blank" aria-label="GitHub">🐙</a>
-            <a href="#" target="_blank" aria-label="LinkedIn">💼</a>
-            <a href="#" target="_blank" aria-label="Twitter">🐦</a>
-            <a href="mailto:mdaroke@example.com" aria-label="Email">✉️</a>
+          <div class="hero-features">
+            <span>📊 Data Analysis</span>
+            <span>🔬 Academic Research</span>
+            <span>🎨 Graphic Design</span>
+            <span>📜 Certifications</span>
           </div>
         </div>
       </section>
       <footer>
         <div class="container">
-          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
+          <p>&copy; 2026 MlinkTech. All rights reserved. | Learn. Grow. Succeed.</p>
         </div>
       </footer>
     </div>
@@ -833,33 +877,28 @@
     <div class="page" id="page-about">
       <section class="about" style="padding-top: 40px;">
         <div class="container">
-          <h2>About Me</h2>
+          <h2>About MlinkTech</h2>
           <div class="about-grid">
             <div class="about-image">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop&crop=center" alt="Workspace">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop&crop=center" alt="About MlinkTech">
             </div>
             <div class="about-text">
-              <h3>Passionate Developer</h3>
+              <h3>Your Gateway to Digital Excellence</h3>
               <p>
-                Hello! I'm <strong>MdAroke</strong>, a passionate developer with a love for creating
-                beautiful, functional, and user-friendly web experiences.
+                <strong>MlinkTech</strong> is a premier online learning platform dedicated to 
+                equipping individuals with in-demand digital skills. We offer comprehensive 
+                training in Data Analysis, Academic Research, and Graphic Design.
               </p>
               <p>
-                I specialize in front-end development and enjoy working with modern technologies
-                like React, JavaScript, and CSS to bring ideas to life. I believe in writing
-                clean, maintainable code and constantly learning new things.
+                Our mission is to bridge the skills gap and empower learners to achieve 
+                their career goals through practical, hands-on training and expert guidance.
               </p>
               <p>
-                When I'm not coding, I enjoy exploring new technologies, contributing to open-source
-                projects, and sharing knowledge with the developer community.
+                <strong>Our Vision:</strong> To become Africa's leading digital skills 
+                training platform, producing world-class professionals.
               </p>
-              <div class="skill-tags">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-                <span>React</span><span>Git</span><span>Node.js</span>
-                <span>Tailwind</span><span>TypeScript</span>
-              </div>
-              <div style="margin-top: 2rem;">
-                <a onclick="navigateTo('contact')" class="btn btn-primary">Get in Touch</a>
+              <div style="margin-top: 1.5rem;">
+                <a onclick="navigateTo('courses')" class="btn btn-primary">View Our Courses</a>
               </div>
             </div>
           </div>
@@ -867,90 +906,123 @@
       </section>
       <footer>
         <div class="container">
-          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
+          <p>&copy; 2026 MlinkTech. All rights reserved. | Learn. Grow. Succeed.</p>
         </div>
       </footer>
     </div>
 
-    <!-- ===== PROJECTS PAGE ===== -->
-    <div class="page" id="page-projects">
-      <section class="projects" style="padding-top: 40px;">
+    <!-- ===== COURSES PAGE ===== -->
+    <div class="page" id="page-courses">
+      <section class="courses" style="padding-top: 40px;">
         <div class="container">
-          <h2>My Projects</h2>
-          <p class="section-subtitle">Here are some of the projects I've worked on</p>
-          <div class="project-grid">
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&crop=center" alt="E-Commerce">
+          <h2>Our Courses</h2>
+          <p class="section-subtitle">Choose your learning path and start your journey today</p>
+          <div class="course-grid">
+
+            <!-- Data Analysis -->
+            <div class="course-card data">
+              <span class="icon">📊</span>
+              <h3>Data Analysis</h3>
+              <p>Master the art of data analysis with industry-standard tools</p>
+              <div class="course-tags">
+                <span>Excel</span>
+                <span>Power BI</span>
+                <span>SQL</span>
               </div>
-              <div class="project-body">
-                <h3>🛒 E-Commerce Platform</h3>
-                <p>Full-featured online store with cart, payments, and admin dashboard.</p>
-                <div class="project-tags"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
-              </div>
-            </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=center" alt="Dashboard">
-              </div>
-              <div class="project-body">
-                <h3>📊 Analytics Dashboard</h3>
-                <p>Real-time data visualization dashboard with interactive charts and metrics.</p>
-                <div class="project-tags"><span>Vue.js</span><span>D3.js</span><span>Firebase</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              <div style="margin-top: 1.5rem;">
+                <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=300&fit=crop&crop=center" alt="Task Manager">
+
+            <!-- Academic Research -->
+            <div class="course-card research">
+              <span class="icon">🔬</span>
+              <h3>Academic Research</h3>
+              <p>Develop research skills for academic excellence and professional writing</p>
+              <div class="course-tags">
+                <span>Science Research</span>
+                <span>Technical Writing</span>
               </div>
-              <div class="project-body">
-                <h3>✅ Task Manager</h3>
-                <p>Collaborative task management app with real-time updates and team features.</p>
-                <div class="project-tags"><span>React</span><span>Socket.io</span><span>PostgreSQL</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
-              </div>
-            </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=600&h=300&fit=crop&crop=center" alt="Weather App">
-              </div>
-              <div class="project-body">
-                <h3>🌤️ Weather App</h3>
-                <p>Real-time weather forecasting app with location-based updates.</p>
-                <div class="project-tags"><span>JavaScript</span><span>API</span><span>CSS</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              <div style="margin-top: 1.5rem;">
+                <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=300&fit=crop&crop=center" alt="Blog Platform">
+
+            <!-- Graphic Design -->
+            <div class="course-card design">
+              <span class="icon">🎨</span>
+              <h3>Graphic Design</h3>
+              <p>Create stunning visuals with professional design tools</p>
+              <div class="course-tags">
+                <span>PixelLab</span>
+                <span>Canva</span>
+                <span>AI Tools</span>
               </div>
-              <div class="project-body">
-                <h3>📝 Blog Platform</h3>
-                <p>Full-stack blogging platform with authentication, comments, and markdown.</p>
-                <div class="project-tags"><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
+              <div style="margin-top: 1.5rem;">
+                <a onclick="navigateTo('learning')" class="btn btn-primary btn-sm">Start Learning</a>
               </div>
             </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=center" alt="Portfolio">
-              </div>
-              <div class="project-body">
-                <h3>🎨 Portfolio Builder</h3>
-                <p>Drag-and-drop portfolio builder for creatives with customizable templates.</p>
-                <div class="project-tags"><span>React</span><span>Tailwind</span><span>Framer</span></div>
-                <a href="#" class="btn btn-secondary btn-sm">View Project →</a>
-              </div>
+
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <p>&copy; 2026 MlinkTech. All rights reserved. | Learn. Grow. Succeed.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ===== LEARNING PAGE (Quiz + Certification) ===== -->
+    <div class="page" id="page-learning">
+      <!-- Quiz Section -->
+      <section class="quiz-section" style="padding-top: 40px;">
+        <div class="container">
+          <h2>📝 Knowledge Check</h2>
+          <p class="section-subtitle">Test your understanding with our interactive quiz</p>
+          
+          <div class="quiz-container">
+            <div id="quizContainer">
+              <div class="quiz-question" id="quizQuestion">Loading question...</div>
+              <div class="quiz-options" id="quizOptions"></div>
+              <button class="btn btn-primary" id="quizSubmit" onclick="submitQuiz()">Submit Answer</button>
+              <button class="btn btn-secondary" id="quizNext" onclick="nextQuestion()" style="display:none; margin-top:0.5rem;">Next Question →</button>
+              <div class="quiz-result" id="quizResult"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certification Section -->
+      <section class="cert-section">
+        <div class="container">
+          <h2>🎓 Earn Your Certification</h2>
+          <p class="section-subtitle">Complete the quiz and earn a certificate of completion</p>
+          <div class="cert-grid">
+            <div class="cert-card">
+              <span class="icon">📊</span>
+              <h3>Data Analysis</h3>
+              <p>Excel, Power BI & SQL</p>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Data Analysis Specialist')">Claim Certificate</button>
+            </div>
+            <div class="cert-card">
+              <span class="icon">🔬</span>
+              <h3>Research & Writing</h3>
+              <p>Science Research & Technical Writing</p>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Research & Writing Expert')">Claim Certificate</button>
+            </div>
+            <div class="cert-card">
+              <span class="icon">🎨</span>
+              <h3>Graphic Design</h3>
+              <p>PixelLab, Canva & AI</p>
+              <button class="btn btn-success btn-sm" style="margin-top:1rem;" onclick="alert('🎉 Certificate: Graphic Design Professional')">Claim Certificate</button>
             </div>
           </div>
         </div>
       </section>
       <footer>
         <div class="container">
-          <p>&copy; 2026 MdAroke. Crafted with ❤️</p>
+          <p>&copy; 2026 MlinkTech. All rights reserved. | Learn. Grow. Succeed.</p>
         </div>
       </footer>
     </div>
@@ -958,26 +1030,4 @@
     <!-- ===== CONTACT PAGE ===== -->
     <div class="page" id="page-contact">
       <section class="contact" style="padding-top: 40px;">
-        <div class="container">
-          <div class="contact-wrapper">
-            <div class="contact-image">
-              <img src="https://ui-avatars.com/api/?name=Md+Aroke&size=200&background=3498db&color=fff&bold=true" alt="MdAroke Contact">
-            </div>
-            <h2>Get in Touch</h2>
-            <p>📬 Have a question or want to collaborate? Feel free to reach out!</p>
-            <div class="contact-links">
-              <a href="mailto:mdaroke@example.com" class="contact-item">
-                <span class="icon">✉️</span> Email Me
-              </a>
-              <a href="https://github.com/MdAroke" target="_blank" class="contact-item">
-                <span class="icon">🐙</span> GitHub
-              </a>
-              <a href="#" target="_blank" class="contact-item">
-                <span class="icon">💼</span> LinkedIn
-              </a>
-              <a href="#" target="_blank" class="contact-item">
-                <span class="icon">🐦</span> Twitter
-              </a>
-            </div>
-            <div style="margin-top: 2rem; padding: 2rem; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);">
-              <h3 style="color: var(--primary);">Send a Message</h3>
+       
