@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,6 +19,12 @@
       color: #1e293b;
       scroll-behavior: smooth;
       line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* ----- navigation ----- */
@@ -47,11 +52,21 @@
       color: #facc15;
     }
 
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      color: #facc15;
+      font-size: 1.55rem;
+      cursor: pointer;
+    }
+
     .nav-links {
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -479,13 +494,26 @@
         gap: 10px;
         padding: 1rem;
       }
+      .nav-toggle {
+        display: block;
+      }
       .nav-links {
+        width: 100%;
+        flex-direction: column;
         justify-content: center;
-        gap: 0.4rem;
+        gap: 0.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-links.open {
+        max-height: 420px;
       }
       .nav-links a {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.7rem;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        width: 100%;
+        justify-content: center;
       }
       .slide {
         font-size: 1.4rem;
@@ -545,6 +573,7 @@
 <!-- NAVIGATION -->
 <nav class="navbar">
   <div class="logo"><i class="fas fa-graduation-cap"></i> MlinkTech</div>
+  <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
   <ul class="nav-links">
     <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
     <li><a href="#" data-page="about"><i class="fas fa-users"></i> About</a></li>
@@ -809,6 +838,16 @@
 
   // initial
   showSlide(0);
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.innerHTML = navLinks.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+  }
 </script>
 </body>
 </html>
