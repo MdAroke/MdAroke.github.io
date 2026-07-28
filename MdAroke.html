@@ -7,6 +7,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    /* ----- GLOBAL STYLES ----- */
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +18,6 @@
     body {
       background: #f4f7fc;
       color: #1e293b;
-      scroll-behavior: smooth;
       line-height: 1.6;
     }
 
@@ -27,7 +27,7 @@
       display: block;
     }
 
-    /* ----- navigation ----- */
+    /* ----- NAVIGATION BAR ----- */
     .navbar {
       background: #0b2b3d;
       padding: 0.8rem 2rem;
@@ -46,6 +46,7 @@
       font-size: 1.7rem;
       font-weight: 700;
       letter-spacing: 1px;
+      cursor: pointer;
     }
     .logo i {
       margin-right: 8px;
@@ -80,6 +81,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
     }
 
     .nav-links li {
@@ -92,27 +94,28 @@
       color: #0b2b3d;
     }
 
-    /* ----- pages (sections) ----- */
+    /* ----- PAGES (SECTIONS) ----- */
     .page {
       display: none;
       padding: 2rem 1.5rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
-      animation: fadeUp 0.4s ease;
+      /* Quick fade in effect */
+      animation: pageLoad 0.3s ease;
     }
 
     .page.active {
       display: block;
     }
 
-    @keyframes fadeUp {
-      0% { opacity: 0.3; transform: translateY(12px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes pageLoad {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
-    /* ============================================== */
-    /* NEW: HERO PROFILE SECTION (Photo + About Me)  */
-    /* ============================================== */
+    /* ========================================== */
+    /* HOME PAGE: ABOUT ME & PHOTO (TOP SECTION)  */
+    /* ========================================== */
     .hero-profile {
       display: flex;
       flex-wrap: wrap;
@@ -127,9 +130,9 @@
     }
 
     .hero-profile .profile-img {
-      flex: 0 0 160px;
-      width: 160px;
-      height: 160px;
+      flex: 0 0 180px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid #facc15;
@@ -141,12 +144,12 @@
     }
 
     .hero-profile .profile-text h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: #0b2b3d;
       margin-bottom: 0.2rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .hero-profile .profile-text h1 i {
@@ -154,25 +157,24 @@
     }
 
     .hero-profile .profile-text .tagline {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: #475569;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
 
     .hero-profile .profile-text p {
       color: #334155;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 1rem;
     }
 
-    /* Small course badges inside the profile */
-    .profile-course-badges {
+    .profile-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 1rem;
     }
-    
-    .profile-course-badges span {
+
+    .profile-badges span {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       padding: 0.4rem 1.2rem;
@@ -185,11 +187,11 @@
       gap: 8px;
     }
 
-    .profile-course-badges span i {
+    .profile-badges span i {
       color: #facc15;
     }
 
-    /* ----- HERO SLIDESHOW (home) ----- */
+    /* ----- HOME: SLIDESHOW ----- */
     .slideshow-container {
       position: relative;
       width: 100%;
@@ -274,71 +276,7 @@
       width: 28px;
     }
 
-    /* ----- intro section (About Me & Courses) before sign-up ----- */
-    .intro-section {
-      background: white;
-      border-radius: 40px;
-      padding: 2.5rem 2rem;
-      margin: 1.5rem 0 2rem;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.06);
-      border: 1px solid #e9eef3;
-    }
-
-    .intro-section h2 {
-      font-size: 2.2rem;
-      color: #0b2b3d;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .intro-section h2 i {
-      color: #facc15;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .intro-card {
-      background: #f8fafc;
-      padding: 1.5rem 1rem;
-      border-radius: 28px;
-      text-align: center;
-      transition: 0.2s;
-      border: 1px solid #eef2f6;
-    }
-
-    .intro-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-    }
-
-    .intro-card i {
-      font-size: 2.4rem;
-      color: #facc15;
-      background: #fef9e0;
-      padding: 14px;
-      border-radius: 60px;
-      margin-bottom: 10px;
-    }
-
-    .intro-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-
-    .intro-card p {
-      color: #475569;
-      font-size: 0.95rem;
-    }
-
-    /* sign-up card */
+    /* ----- HOME: SIGN UP ----- */
     .signup-card {
       background: white;
       max-width: 560px;
@@ -390,7 +328,30 @@
       box-shadow: 0 4px 0 #b48d0e;
     }
 
-    /* course cards with images (courses page) */
+    /* ----- ABOUT PAGE ----- */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .about-text {
+      flex: 1 1 260px;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    /* ----- COURSES PAGE ----- */
     .course-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -434,64 +395,7 @@
       line-height: 1.5;
     }
 
-    .course-card .card-body i {
-      color: #facc15;
-      margin-right: 6px;
-    }
-
-    /* about / contact */
-    .about-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-      margin: 2rem 0;
-    }
-
-    .about-text {
-      flex: 1 1 260px;
-    }
-
-    .about-text h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-text p {
-      line-height: 1.8;
-      color: #334155;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      background: white;
-      padding: 2rem 2.5rem;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.06);
-    }
-
-    .contact-info div {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 1.1rem;
-    }
-
-    .contact-info i {
-      width: 44px;
-      height: 44px;
-      background: #fef9e0;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b2b3d;
-      font-size: 1.3rem;
-    }
-
-    /* quiz & certificate */
+    /* ----- QUIZ PAGE ----- */
     .quiz-box {
       background: white;
       padding: 2rem;
@@ -527,12 +431,6 @@
       border-color: #facc15;
     }
 
-    .quiz-box .options input[type="radio"] {
-      margin-right: 12px;
-      accent-color: #facc15;
-      transform: scale(1.2);
-    }
-
     .quiz-box .btn {
       background: #0b2b3d;
       color: white;
@@ -562,6 +460,37 @@
       color: #facc15;
     }
 
+    /* ----- CONTACT PAGE ----- */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.06);
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 1.1rem;
+    }
+
+    .contact-info i {
+      width: 44px;
+      height: 44px;
+      background: #fef9e0;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b2b3d;
+      font-size: 1.3rem;
+    }
+
+    /* ----- FOOTER ----- */
     .footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -570,59 +499,46 @@
       margin-top: 2rem;
     }
 
-    /* ----- responsive fine-tune ----- */
+    /* ----- RESPONSIVE ----- */
     @media (max-width: 768px) {
       .navbar {
         justify-content: space-between;
-        align-items: center;
         padding: 1rem 1.5rem;
       }
       .nav-toggle {
         display: block;
       }
       .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 1.5rem;
-        left: auto;
-        width: calc(100% - 3rem);
-        max-width: 320px;
-        background: rgba(11, 43, 61, 0.98);
+        display: none;
         flex-direction: column;
-        gap: 0.5rem;
+        width: 100%;
+        background: #0b2b3d;
         padding: 1rem;
-        border-radius: 24px;
-        box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
+        border-radius: 0 0 20px 20px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 99;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       }
       .nav-links.open {
-        max-height: 520px;
-        opacity: 1;
+        display: flex;
       }
       .nav-links a {
-        font-size: 0.95rem;
-        padding: 0.75rem 1rem;
         width: 100%;
         justify-content: flex-start;
-        border-radius: 20px;
       }
-      .nav-links li {
-        width: 100%;
-      }
-      
+
       .hero-profile {
         flex-direction: column;
         text-align: center;
         padding: 2rem 1.5rem;
       }
       .hero-profile .profile-text h1 {
-        font-size: 1.8rem;
         justify-content: center;
+        font-size: 2rem;
       }
-      .profile-course-badges {
+      .profile-badges {
         justify-content: center;
       }
 
@@ -635,23 +551,16 @@
         padding: 8px 12px;
         font-size: 1.2rem;
       }
-      .intro-section h2 {
-        font-size: 1.8rem;
-      }
       .signup-card {
         padding: 1.5rem;
         margin: 1rem auto;
-      }
-      .course-grid {
-        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 480px) {
       .nav-links a {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-        gap: 3px;
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
       }
       .logo {
         font-size: 1.4rem;
@@ -660,12 +569,6 @@
         font-size: 1.1rem;
         min-height: 160px;
         padding: 1.5rem 1rem;
-      }
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-      .course-grid {
-        grid-template-columns: 1fr;
       }
       .about-grid {
         flex-direction: column;
@@ -681,11 +584,12 @@
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- ==================== NAVIGATION ==================== -->
 <nav class="navbar">
-  <div class="logo"><i class="fas fa-graduation-cap"></i> MlinkTech</div>
-  <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-  <ul class="nav-links">
+  <!-- Click Logo to go Home -->
+  <div class="logo" onclick="showPage('home')"><i class="fas fa-graduation-cap"></i> MlinkTech</div>
+  <button class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
     <li><a href="#" data-page="about"><i class="fas fa-users"></i> About</a></li>
     <li><a href="#" data-page="courses"><i class="fas fa-book"></i> Courses</a></li>
@@ -694,21 +598,19 @@
   </ul>
 </nav>
 
-<!-- ============ HOME PAGE ============ -->
+<!-- ==================== HOME PAGE ==================== -->
 <section id="home" class="page active">
   
-  <!-- ============================================== -->
-  <!-- NEW: ABOUT ME & COURSES SECTION (With Photo)  -->
-  <!-- ============================================== -->
+  <!-- 1. ABOUT ME + PHOTO (Top of Home Page) -->
   <div class="hero-profile">
-    <!-- IMPORTANT: Replace the src="" below with your actual image URL or local path -->
+    <!-- IMPORTANT: Replace src with your actual photo URL or local file path -->
     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop&crop=face" alt="Muhammed Aminu" class="profile-img" />
     <div class="profile-text">
       <h1><i class="fas fa-chalkboard-teacher"></i> Muhammed Aminu</h1>
       <div class="tagline">Founder & Lead Instructor at MlinkTech Academy</div>
       <p>Welcome to MlinkTech Academy! I'm passionate about equipping learners with practical, industry-ready skills. With years of experience in data science and design, I've crafted these courses to help you build a career you love.</p>
       
-      <div class="profile-course-badges">
+      <div class="profile-badges">
         <span><i class="fas fa-chart-line"></i> Data Analysis</span>
         <span><i class="fas fa-palette"></i> Graphic Design</span>
         <span><i class="fas fa-microscope"></i> Academic Research</span>
@@ -717,7 +619,7 @@
     </div>
   </div>
 
-  <!-- Slideshow -->
+  <!-- 2. SLIDESHOW -->
   <div class="slideshow-container">
     <div class="slide active-slide" style="background-image: linear-gradient(135deg, #0b2b3de0, #1e4a5fe0), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=400&fit=crop&crop=center');">
       <i class="fas fa-chalkboard-teacher"></i> Learn Data Analysis
@@ -742,38 +644,7 @@
     <span class="dot" onclick="currentSlide(3)"></span>
   </div>
 
-  <!-- intro section (Detailed course cards) -->
-  <div class="intro-section">
-    <h2><i class="fas fa-layer-group"></i> Our Core Programs</h2>
-    <p style="font-size: 1.1rem; color: #1e293b; max-width: 800px;">
-      Dive into real-world projects, expert mentorship, and a supportive community. 
-      Each course includes practical assignments and a final quiz to earn your certificate.
-    </p>
-    <div class="intro-grid">
-      <div class="intro-card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Data Analysis</h3>
-        <p>Python, SQL, Tableau, statistics & real-world case studies.</p>
-      </div>
-      <div class="intro-card">
-        <i class="fas fa-paint-brush"></i>
-        <h3>Graphic Design</h3>
-        <p>Photoshop, Illustrator, Figma, branding & UI/UX principles.</p>
-      </div>
-      <div class="intro-card">
-        <i class="fas fa-book-open"></i>
-        <h3>Academic Research</h3>
-        <p>Research methods, academic writing, literature review & publishing.</p>
-      </div>
-      <div class="intro-card">
-        <i class="fas fa-certificate"></i>
-        <h3>Certificates</h3>
-        <p>Earn verifiable certificates after passing each course quiz.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- sign-up section -->
+  <!-- 3. SIGN UP -->
   <div class="signup-card">
     <h2><i class="fas fa-user-plus" style="color: #facc15;"></i> Join us</h2>
     <p>Sign up to access all courses, quizzes & certificates</p>
@@ -783,15 +654,11 @@
     <button class="btn" onclick="alert('🎉 Welcome to MlinkTech! (demo)')"><i class="fas fa-arrow-right"></i> Sign up →</button>
     <p style="margin-top: 12px; font-size: 0.9rem; color: #64748b;">Already have an account? <a href="#" style="color:#0b2b3d; font-weight:600;">Log in</a></p>
   </div>
-
-  <div style="text-align: center; margin: 0.5rem 0 0.5rem;">
-    <p style="font-size: 1.1rem; color: #1e293b;"><i class="fas fa-star" style="color: #facc15;"></i> Data · Design · Research — start your journey today</p>
-  </div>
 </section>
 
-<!-- ============ ABOUT PAGE ============ -->
+<!-- ==================== ABOUT PAGE ==================== -->
 <section id="about" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
     <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=300&fit=crop&crop=center" alt="about" style="width:100%; height:220px; object-fit:cover;" />
   </div>
   <div class="about-grid">
@@ -808,9 +675,9 @@
   </div>
 </section>
 
-<!-- ============ COURSES PAGE ============ -->
+<!-- ==================== COURSES PAGE ==================== -->
 <section id="courses" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
     <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=300&fit=crop&crop=center" alt="courses banner" style="width:100%; height:220px; object-fit:cover;" />
   </div>
 
@@ -836,34 +703,13 @@
         <p>Research methods, academic writing, literature review.</p>
       </div>
     </div>
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Data Science" />
-      <div class="card-body">
-        <h3><i class="fas fa-database"></i> Data Science</h3>
-        <p>Machine learning, predictive analytics, big data.</p>
-      </div>
-    </div>
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=200&fit=crop&crop=center" alt="Motion Design" />
-      <div class="card-body">
-        <h3><i class="fas fa-video"></i> Motion Design</h3>
-        <p>After Effects, animation, video editing.</p>
-      </div>
-    </div>
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&h=200&fit=crop&crop=center" alt="Research Paper" />
-      <div class="card-body">
-        <h3><i class="fas fa-file-alt"></i> Research Paper</h3>
-        <p>Structure, citation, publication strategies.</p>
-      </div>
-    </div>
   </div>
-  <p style="text-align:center; color:#475569;"><i class="fas fa-check-circle" style="color:#facc15;"></i> All courses include quizzes, projects & certificate</p>
+  <p style="text-align:center; color:#475569; margin-top:1.5rem;"><i class="fas fa-check-circle" style="color:#facc15;"></i> All courses include quizzes, projects & certificate</p>
 </section>
 
-<!-- ============ QUIZ & CERTIFICATE PAGE ============ -->
+<!-- ==================== QUIZ & CERTIFICATE PAGE ==================== -->
 <section id="quiz" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin:1.5rem 0 2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
     <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0d?w=1200&h=300&fit=crop&crop=center" alt="quiz banner" style="width:100%; height:220px; object-fit:cover;" />
   </div>
 
@@ -884,3 +730,117 @@
     </div>
   </div>
 </section>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<section id="contact" class="page">
+  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+    <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=300&fit=crop&crop=center" alt="contact" style="width:100%; height:220px; object-fit:cover;" />
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;">
+    <div class="contact-info" style="flex:1; min-width:260px;">
+      <div><i class="fas fa-map-marker-alt"></i> 123 Academy St, London, UK</div>
+      <div><i class="fas fa-phone"></i> +44 20 7946 0958</div>
+      <div><i class="fas fa-envelope"></i> hello@mlinktech.academy</div>
+      <div><i class="fas fa-globe"></i> www.mlinktech.academy</div>
+    </div>
+    <div style="flex:1; min-width:240px; background: white; border-radius: 40px; padding: 2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
+      <h3><i class="fas fa-paper-plane" style="color:#facc15;"></i> Send a message</h3>
+      <input type="text" placeholder="Your name" style="width:100%; padding:12px; border-radius:40px; border:1px solid #d1d9e6; margin:10px 0;" />
+      <input type="email" placeholder="Email" style="width:100%; padding:12px; border-radius:40px; border:1px solid #d1d9e6; margin:10px 0;" />
+      <textarea rows="2" placeholder="Message" style="width:100%; padding:12px; border-radius:30px; border:1px solid #d1d9e6; margin:10px 0;"></textarea>
+      <button class="btn" style="background:#0b2b3d; color:white; border:none; padding:12px 28px; border-radius:60px; font-weight:600; cursor:pointer;" onclick="alert('📩 Message sent (demo)')">Send <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <p>© 2026 MlinkTech Academy — online classes in Data Analysis, Research & Graphic Design</p>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  // 1. PAGE NAVIGATION (Show/Hide pages)
+  const links = document.querySelectorAll('.nav-links a');
+  const pages = {
+    home: document.getElementById('home'),
+    about: document.getElementById('about'),
+    courses: document.getElementById('courses'),
+    quiz: document.getElementById('quiz'),
+    contact: document.getElementById('contact')
+  };
+
+  function showPage(pageId) {
+    // Hide all pages
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    // Show the selected page
+    if (pages[pageId]) pages[pageId].classList.add('active');
+    // Update the active link
+    links.forEach(link => {
+      link.classList.remove('active');
+      if (link.dataset.page === pageId) link.classList.add('active');
+    });
+    // Close mobile menu if it's open
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+    }
+  }
+
+  // Make function global so the Logo onclick works
+  window.showPage = showPage;
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      if (page) showPage(page);
+    });
+  });
+
+  // 2. MOBILE MENU TOGGLE
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('open');
+  }
+  // Make toggle function global
+  window.toggleMenu = toggleMenu;
+
+  // 3. SLIDESHOW
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index >= slides.length) slideIndex = 0;
+    if (index < 0) slideIndex = slides.length - 1;
+    slides.forEach((s, i) => {
+      s.classList.toggle('active-slide', i === slideIndex);
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active-dot', i === slideIndex);
+    });
+  }
+
+  function changeSlide(step) {
+    showSlide(slideIndex += step);
+  }
+
+  function currentSlide(index) {
+    slideIndex = index;
+    showSlide(slideIndex);
+  }
+
+  // Make slideshow functions global
+  window.changeSlide = changeSlide;
+  window.currentSlide = currentSlide;
+
+  // Auto slide every 5 seconds
+  setInterval(() => { changeSlide(1); }, 5000);
+
+  // Initial slideshow load
+  showSlide(0);
+</script>
+</body>
+</html>
+```
