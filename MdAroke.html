@@ -1,846 +1,107 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
-  <title>MlinkTech Academy</title>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammed Aminu - Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    /* ----- GLOBAL STYLES ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-    }
-
-    body {
-      background: #f4f7fc;
-      color: #1e293b;
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ----- NAVIGATION BAR ----- */
-    .navbar {
-      background: #0b2b3d;
-      padding: 0.8rem 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-    }
-
-    .logo {
-      color: #facc15;
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-    .logo i {
-      margin-right: 8px;
-      color: #facc15;
-    }
-
-    .nav-toggle {
-      display: none;
-      border: none;
-      background: transparent;
-      color: #facc15;
-      font-size: 1.55rem;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #e2e8f0;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.4rem 0.8rem;
-      border-radius: 30px;
-      transition: 0.2s;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .nav-links li {
-      list-style: none;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: #facc15;
-      color: #0b2b3d;
-    }
-
-    /* ----- PAGES (SECTIONS) ----- */
-    .page {
-      display: none;
-      padding: 2rem 1.5rem 4rem;
-      max-width: 1300px;
-      margin: 0 auto;
-      /* Quick fade in effect */
-      animation: pageLoad 0.3s ease;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    @keyframes pageLoad {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    /* ========================================== */
-    /* HOME PAGE: ABOUT ME & PHOTO (TOP SECTION)  */
-    /* ========================================== */
-    .hero-profile {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2.5rem;
-      background: white;
-      border-radius: 40px;
-      padding: 2rem 2.5rem;
-      margin: 0 0 2rem 0;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.06);
-      border: 1px solid #e9eef3;
-    }
-
-    .hero-profile .profile-img {
-      flex: 0 0 180px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #facc15;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    .hero-profile .profile-text {
-      flex: 1;
-    }
-
-    .hero-profile .profile-text h1 {
-      font-size: 2.5rem;
-      color: #0b2b3d;
-      margin-bottom: 0.2rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .hero-profile .profile-text h1 i {
-      color: #facc15;
-    }
-
-    .hero-profile .profile-text .tagline {
-      font-size: 1.1rem;
-      color: #475569;
-      margin-bottom: 1rem;
-    }
-
-    .hero-profile .profile-text p {
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-
-    .profile-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .profile-badges span {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      padding: 0.4rem 1.2rem;
-      border-radius: 60px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #0b2b3d;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .profile-badges span i {
-      color: #facc15;
-    }
-
-    /* ----- HOME: SLIDESHOW ----- */
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      border-radius: 28px;
-      overflow: hidden;
-      margin: 1.5rem 0 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      background: #0b2b3d;
-    }
-
-    .slide {
-      display: none;
-      width: 100%;
-      min-height: 260px;
-      background-size: cover;
-      background-position: center;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 2rem;
-      color: white;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.6);
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .slide.active-slide {
-      display: flex;
-    }
-
-    .slide i {
-      margin-right: 18px;
-      background: rgba(255,255,255,0.15);
-      padding: 16px;
-      border-radius: 60px;
-    }
-
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 12px 16px;
-      color: white;
-      font-weight: bold;
-      font-size: 1.6rem;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-      border-radius: 60px;
-      user-select: none;
-      transition: 0.2s;
-      z-index: 10;
-      border: none;
-    }
-
-    .prev { left: 12px; }
-    .next { right: 12px; }
-
-    .prev:hover, .next:hover {
-      background: #facc15;
-      color: #0b2b3d;
-    }
-
-    .dots {
-      text-align: center;
-      padding: 12px 0 4px;
-    }
-
-    .dot {
-      cursor: pointer;
-      height: 14px;
-      width: 14px;
-      margin: 0 6px;
-      background: #b9c7d9;
-      border-radius: 30px;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .dot.active-dot, .dot:hover {
-      background: #facc15;
-      width: 28px;
-    }
-
-    /* ----- HOME: SIGN UP ----- */
-    .signup-card {
-      background: white;
-      max-width: 560px;
-      margin: 1.5rem auto 2rem;
-      padding: 2rem 2.5rem;
-      border-radius: 48px;
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-
-    .signup-card h2 {
-      font-size: 2rem;
-      color: #0b2b3d;
-      margin-bottom: 0.5rem;
-    }
-    .signup-card p {
-      color: #475569;
-      margin-bottom: 1.8rem;
-    }
-
-    .signup-card input {
-      width: 100%;
-      padding: 14px 18px;
-      margin: 8px 0;
-      border: 1px solid #d1d9e6;
-      border-radius: 60px;
-      font-size: 1rem;
-      background: #f8fafc;
-    }
-
-    .signup-card .btn {
-      background: #facc15;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #0b2b3d;
-      width: 100%;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 10px;
-      box-shadow: 0 6px 0 #b48d0e;
-    }
-
-    .signup-card .btn:hover {
-      background: #fde047;
-      transform: scale(0.98);
-      box-shadow: 0 4px 0 #b48d0e;
-    }
-
-    /* ----- ABOUT PAGE ----- */
-    .about-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-      margin: 2rem 0;
-    }
-
-    .about-text {
-      flex: 1 1 260px;
-    }
-
-    .about-text h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-text p {
-      line-height: 1.8;
-      color: #334155;
-    }
-
-    /* ----- COURSES PAGE ----- */
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    .course-card {
-      background: white;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: 0 10px 24px -8px rgba(0,0,0,0.08);
-      transition: 0.25s;
-      border: 1px solid #e9eef3;
-    }
-
-    .course-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 40px -16px #0b2b3d40;
-    }
-
-    .course-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .course-card .card-body {
-      padding: 1.2rem 1.5rem 1.5rem;
-    }
-
-    .course-card .card-body h3 {
-      margin-bottom: 6px;
-      font-size: 1.3rem;
-    }
-
-    .course-card .card-body p {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* ----- QUIZ PAGE ----- */
-    .quiz-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.06);
-      max-width: 700px;
-      margin: 2rem auto;
-    }
-
-    .quiz-box .question {
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    .quiz-box .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .quiz-box .options label {
-      background: #f1f5f9;
-      padding: 12px 20px;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: 0.1s;
-      border: 1px solid transparent;
-    }
-
-    .quiz-box .options label:hover {
-      background: #e2e8f0;
-      border-color: #facc15;
-    }
-
-    .quiz-box .btn {
-      background: #0b2b3d;
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 60px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .quiz-box .btn:hover {
-      background: #1e4a5f;
-    }
-
-    .certificate-badge {
-      background: #fef9e0;
-      border: 2px dashed #facc15;
-      border-radius: 60px;
-      padding: 1.2rem 2rem;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .certificate-badge i {
-      font-size: 3rem;
-      color: #facc15;
-    }
-
-    /* ----- CONTACT PAGE ----- */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      background: white;
-      padding: 2rem 2.5rem;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.06);
-    }
-
-    .contact-info div {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 1.1rem;
-    }
-
-    .contact-info i {
-      width: 44px;
-      height: 44px;
-      background: #fef9e0;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b2b3d;
-      font-size: 1.3rem;
-    }
-
-    /* ----- FOOTER ----- */
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #64748b;
-      border-top: 1px solid #dce3ec;
-      margin-top: 2rem;
-    }
-
-    /* ----- RESPONSIVE ----- */
-    @media (max-width: 768px) {
-      .navbar {
-        justify-content: space-between;
-        padding: 1rem 1.5rem;
-      }
-      .nav-toggle {
-        display: block;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: #0b2b3d;
-        padding: 1rem;
-        border-radius: 0 0 20px 20px;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 99;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-      }
-      .nav-links.open {
-        display: flex;
-      }
-      .nav-links a {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .hero-profile {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1.5rem;
-      }
-      .hero-profile .profile-text h1 {
-        justify-content: center;
-        font-size: 2rem;
-      }
-      .profile-badges {
-        justify-content: center;
-      }
-
-      .slide {
-        font-size: 1.4rem;
-        min-height: 200px;
-        padding: 2rem 1.2rem;
-      }
-      .prev, .next {
-        padding: 8px 12px;
-        font-size: 1.2rem;
-      }
-      .signup-card {
-        padding: 1.5rem;
-        margin: 1rem auto;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .nav-links a {
-        font-size: 0.85rem;
-        padding: 0.6rem 1rem;
-      }
-      .logo {
-        font-size: 1.4rem;
-      }
-      .slide {
-        font-size: 1.1rem;
-        min-height: 160px;
-        padding: 1.5rem 1rem;
-      }
-      .about-grid {
-        flex-direction: column;
-      }
-      .contact-info {
-        padding: 1.5rem;
-      }
-      .signup-card h2 {
-        font-size: 1.6rem;
-      }
-    }
+    body { font-family: 'Open Sans', sans-serif; }
+    .hero { background: #0d6efd; color: white; padding: 100px 20px; text-align: center; }
+    .section-title { margin: 50px 0 20px; text-align: center; font-weight: bold; }
+    .portfolio-card { transition: transform 0.3s; }
+    .portfolio-card:hover { transform: scale(1.05); }
+    footer { background: #212529; color: white; padding: 20px; text-align: center; }
   </style>
 </head>
 <body>
 
-<!-- ==================== NAVIGATION ==================== -->
-<nav class="navbar">
-  <!-- Click Logo to go Home -->
-  <div class="logo" onclick="showPage('home')"><i class="fas fa-graduation-cap"></i> MlinkTech</div>
-  <button class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="#" data-page="about"><i class="fas fa-users"></i> About</a></li>
-    <li><a href="#" data-page="courses"><i class="fas fa-book"></i> Courses</a></li>
-    <li><a href="#" data-page="quiz"><i class="fas fa-pencil-alt"></i> Quiz & Cert</a></li>
-    <li><a href="#" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-  </ul>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Aminu</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#learning">Learning</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<!-- ==================== HOME PAGE ==================== -->
-<section id="home" class="page active">
-  
-  <!-- 1. ABOUT ME + YOUR PHOTO (Top of Home Page) -->
-  <div class="hero-profile">
-    <!-- IMPORTANT: Rename your uploaded image to "my-photo.jpg" and put it in the same folder as this file -->
-    <img src="my-photo.png" alt="Muhammed Aminu" class="profile-img" />
-    <div class="profile-text">
-      <h1><i class="fas fa-chalkboard-teacher"></i> Muhammed Aminu</h1>
-      <div class="tagline">Founder & Lead Instructor at MlinkTech Academy</div>
-      <p>Welcome to MlinkTech Academy! I'm passionate about equipping learners with practical, industry-ready skills. With years of experience in data science and design, I've crafted these courses to help you build a career you love.</p>
-      
-      <div class="profile-badges">
-        <span><i class="fas fa-chart-line"></i> Data Analysis</span>
-        <span><i class="fas fa-palette"></i> Graphic Design</span>
-        <span><i class="fas fa-microscope"></i> Academic Research</span>
-        <span><i class="fas fa-certificate"></i> Certificates</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. SLIDESHOW -->
-  <div class="slideshow-container">
-    <div class="slide active-slide" style="background-image: linear-gradient(135deg, #0b2b3de0, #1e4a5fe0), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=400&fit=crop&crop=center');">
-      <i class="fas fa-chalkboard-teacher"></i> Learn Data Analysis
-    </div>
-    <div class="slide" style="background-image: linear-gradient(135deg, #1e3a5fd0, #0b2b3dd0), url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=400&fit=crop&crop=center');">
-      <i class="fas fa-palette"></i> Master Graphic Design
-    </div>
-    <div class="slide" style="background-image: linear-gradient(135deg, #0b2b3dd0, #1e4a5fd0), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop&crop=center');">
-      <i class="fas fa-microscope"></i> Academic Research
-    </div>
-    <div class="slide" style="background-image: linear-gradient(135deg, #1e4a5fd0, #0b2b3dd0), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&crop=center');">
-      <i class="fas fa-certificate"></i> Earn Certificates
-    </div>
-
-    <button class="prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-    <button class="next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
-  </div>
-  <div class="dots">
-    <span class="dot active-dot" onclick="currentSlide(0)"></span>
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
-
-  <!-- 3. SIGN UP -->
-  <div class="signup-card">
-    <h2><i class="fas fa-user-plus" style="color: #facc15;"></i> Join us</h2>
-    <p>Sign up to access all courses, quizzes & certificates</p>
-    <input type="text" placeholder="Full name" />
-    <input type="email" placeholder="Email address" />
-    <input type="password" placeholder="Password" />
-    <button class="btn" onclick="alert('🎉 Welcome to MlinkTech! (demo)')"><i class="fas fa-arrow-right"></i> Sign up →</button>
-    <p style="margin-top: 12px; font-size: 0.9rem; color: #64748b;">Already have an account? <a href="#" style="color:#0b2b3d; font-weight:600;">Log in</a></p>
-  </div>
-</section>
-
-<!-- ==================== ABOUT PAGE ==================== -->
-<section id="about" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=300&fit=crop&crop=center" alt="about" style="width:100%; height:220px; object-fit:cover;" />
-  </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <h2>Empowering future experts</h2>
-      <p>MlinkTech Academy is a leading online learning platform focused on <strong>Data Analysis</strong>, <strong>Graphic Design</strong>, and <strong>Academic Research</strong>. Our courses are built by industry professionals and designed to give you hands-on experience.</p>
-      <p style="margin-top: 1rem;">We believe in practical knowledge, creative thinking, and continuous growth. Join a community of thousands of learners worldwide.</p>
-    </div>
-    <div style="flex:1; min-width:200px; background: #fef9e0; border-radius: 50px; padding: 2rem; text-align:center;">
-      <i class="fas fa-award" style="font-size: 4rem; color:#facc15;"></i>
-      <p style="font-weight:600; font-size:1.4rem;">+12k students</p>
-      <p style="color: #475569;">trust MlinkTech</p>
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <h1>Muhammed Aminu</h1>
+  <p>Zoologist | Data Analyst | Web Developer</p>
+  <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active"><h3>Graduate of Zoology, BUK</h3></div>
+      <div class="carousel-item"><h3>Skilled in Data Analysis & Web Dev</h3></div>
+      <div class="carousel-item"><h3>Researcher: Parasitic Load in Fishes</h3></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== COURSES PAGE ==================== -->
-<section id="courses" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=300&fit=crop&crop=center" alt="courses banner" style="width:100%; height:220px; object-fit:cover;" />
-  </div>
-
-  <div class="course-grid">
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center" alt="Data Analysis" />
-      <div class="card-body">
-        <h3><i class="fas fa-chart-pie"></i> Data Analysis</h3>
-        <p>Python, SQL, Tableau, statistics & real-world projects.</p>
-      </div>
-    </div>
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop&crop=center" alt="Graphic Design" />
-      <div class="card-body">
-        <h3><i class="fas fa-palette"></i> Graphic Design</h3>
-        <p>Photoshop, Illustrator, Figma, branding & UI/UX.</p>
-      </div>
-    </div>
-    <div class="course-card">
-      <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=400&h=200&fit=crop&crop=center" alt="Academy Research" />
-      <div class="card-body">
-        <h3><i class="fas fa-microscope"></i> Academy Research</h3>
-        <p>Research methods, academic writing, literature review.</p>
-      </div>
-    </div>
-  </div>
-  <p style="text-align:center; color:#475569; margin-top:1.5rem;"><i class="fas fa-check-circle" style="color:#facc15;"></i> All courses include quizzes, projects & certificate</p>
+<!-- About -->
+<section id="about" class="container">
+  <h2 class="section-title">About Me</h2>
+  <p>I am Muhammed Aminu, born 10/08/2001, from Okene LGA, Kogi State. Graduate of Zoology from Bayero University Kano. Skilled in Data Analysis, Web Development, and Academic Research.</p>
 </section>
 
-<!-- ==================== QUIZ & CERTIFICATE PAGE ==================== -->
-<section id="quiz" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0d?w=1200&h=300&fit=crop&crop=center" alt="quiz banner" style="width:100%; height:220px; object-fit:cover;" />
+<!-- Portfolio -->
+<section id="portfolio" class="container">
+  <h2 class="section-title">Portfolio & Skills</h2>
+  <div class="row">
+    <div class="col-md-4"><div class="card portfolio-card"><div class="card-body"><h5>Data Analysis</h5><p>Excel, Power BI, NIYA training.</p></div></div></div>
+    <div class="col-md-4"><div class="card portfolio-card"><div class="card-body"><h5>Web Development</h5><p>HTML, CSS, JavaScript, RYFI training.</p></div></div></div>
+    <div class="col-md-4"><div class="card portfolio-card"><div class="card-body"><h5>Academic Research</h5><p>BUK research project on parasitic load in imported fishes.</p></div></div></div>
   </div>
+</section>
 
-  <div class="quiz-box">
-    <div class="question"><i class="fas fa-question-circle" style="color:#facc15;"></i> Which tool is used for data visualization?</div>
-    <div class="options">
-      <label><input type="radio" name="q1" value="python" /> Python</label>
-      <label><input type="radio" name="q1" value="tableau" /> Tableau</label>
-      <label><input type="radio" name="q1" value="photoshop" /> Photoshop</label>
-      <label><input type="radio" name="q1" value="word" /> Microsoft Word</label>
-    </div>
-    <button class="btn" onclick="alert('✅ Correct answer: Tableau! You earned a certificate 🎓')"><i class="fas fa-check"></i> Submit & get certificate</button>
-
-    <div class="certificate-badge">
-      <i class="fas fa-certificate"></i>
-      <h3>Certificate of completion</h3>
-      <p style="color: #475569;">Pass the quiz and claim your MlinkTech certificate</p>
+<!-- Gallery -->
+<section id="gallery" class="container">
+  <h2 class="section-title">Gallery</h2>
+  <div id="gallerySlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active"><img src="img1.jpg" class="d-block w-100" alt="Gallery Image 1"></div>
+      <div class="carousel-item"><img src="img2.jpg" class="d-block w-100" alt="Gallery Image 2"></div>
+      <div class="carousel-item"><img src="img3.jpg" class="d-block w-100" alt="Gallery Image 3"></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CONTACT PAGE ==================== -->
-<section id="contact" class="page">
-  <div style="width:100%; border-radius:28px; overflow:hidden; margin-bottom:2rem; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-    <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=300&fit=crop&crop=center" alt="contact" style="width:100%; height:220px; object-fit:cover;" />
-  </div>
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;">
-    <div class="contact-info" style="flex:1; min-width:260px;">
-      <div><i class="fas fa-map-marker-alt"></i> 123 Academy St, London, UK</div>
-      <div><i class="fas fa-phone"></i> +44 20 7946 0958</div>
-      <div><i class="fas fa-envelope"></i> hello@mlinktech.academy</div>
-      <div><i class="fas fa-globe"></i> www.mlinktech.academy</div>
-    </div>
-    <div style="flex:1; min-width:240px; background: white; border-radius: 40px; padding: 2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
-      <h3><i class="fas fa-paper-plane" style="color:#facc15;"></i> Send a message</h3>
-      <input type="text" placeholder="Your name" style="width:100%; padding:12px; border-radius:40px; border:1px solid #d1d9e6; margin:10px 0;" />
-      <input type="email" placeholder="Email" style="width:100%; padding:12px; border-radius:40px; border:1px solid #d1d9e6; margin:10px 0;" />
-      <textarea rows="2" placeholder="Message" style="width:100%; padding:12px; border-radius:30px; border:1px solid #d1d9e6; margin:10px 0;"></textarea>
-      <button class="btn" style="background:#0b2b3d; color:white; border:none; padding:12px 28px; border-radius:60px; font-weight:600; cursor:pointer;" onclick="alert('📩 Message sent (demo)')">Send <i class="fas fa-arrow-right"></i></button>
-    </div>
+<!-- Learning Section -->
+<section id="learning" class="container">
+  <h2 class="section-title">Learning & Tutorials</h2>
+  <div class="row">
+    <div class="col-md-6"><h5>Excel Data Cleaning Guide</h5><p>Step-by-step tutorial on handling duplicates and missing values.</p></div>
+    <div class="col-md-6"><h5>Data Visualization Tips</h5><p>Learn to use charts and Power BI effectively.</p></div>
+    <div class="col-md-6"><h5>Web Development Basics</h5><p>Intro to HTML, CSS, and responsive design.</p></div>
+    <div class="col-md-6"><h5>Academic Research Guide</h5><p>Structuring papers, managing references, analyzing findings.</p></div>
+    <div class="col-md-6"><h5>Excel Shortcuts & Hacks</h5><p>Keyboard shortcuts and formulas to save time.</p></div>
   </div>
 </section>
 
-<!-- ==================== FOOTER ==================== -->
-<footer class="footer">
-  <p>© 2026 MlinkTech Academy — online classes in Data Analysis, Research & Graphic Design</p>
+<!-- Contact -->
+<section id="contact" class="container">
+  <h2 class="section-title">Contact</h2>
+  <p>Email: <a href="mailto:elamin2955@gmail.co">elamin2955@gmail.co</a></p>
+  <p>LinkedIn: <a href="https://linkedin.com/in/Aminu-Muhammed-6a72a1417">linkedin.com/in/Aminu-Muhammed-6a72a1417</a></p>
+  <p>Phone: <a href="tel:08135260845">08135260845</a> / <a href="tel:08030431699">08030431699</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Muhammed Aminu. All Rights Reserved.</p>
 </footer>
 
-<!-- ==================== JAVASCRIPT ==================== -->
-<script>
-  // 1. PAGE NAVIGATION (Show/Hide pages)
-  const links = document.querySelectorAll('.nav-links a');
-  const pages = {
-    home: document.getElementById('home'),
-    about: document.getElementById('about'),
-    courses: document.getElementById('courses'),
-    quiz: document.getElementById('quiz'),
-    contact: document.getElementById('contact')
-  };
-
-  function showPage(pageId) {
-    // Hide all pages
-    Object.values(pages).forEach(p => p.classList.remove('active'));
-    // Show the selected page
-    if (pages[pageId]) pages[pageId].classList.add('active');
-    // Update the active link
-    links.forEach(link => {
-      link.classList.remove('active');
-      if (link.dataset.page === pageId) link.classList.add('active');
-    });
-    // Close mobile menu if it's open
-    const navLinks = document.getElementById('navLinks');
-    if (navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-    }
-  }
-
-  // Make function global so the Logo onclick works
-  window.showPage = showPage;
-
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const page = link.dataset.page;
-      if (page) showPage(page);
-    });
-  });
-
-  // 2. MOBILE MENU TOGGLE
-  function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('open');
-  }
-  // Make toggle function global
-  window.toggleMenu = toggleMenu;
-
-  // 3. SLIDESHOW
-  let slideIndex = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-
-  function showSlide(index) {
-    if (index >= slides.length) slideIndex = 0;
-    if (index < 0) slideIndex = slides.length - 1;
-    slides.forEach((s, i) => {
-      s.classList.toggle('active-slide', i === slideIndex);
-    });
-    dots.forEach((d, i) => {
-      d.classList.toggle('active-dot', i === slideIndex);
-    });
-  }
-
-  function changeSlide(step) {
-    showSlide(slideIndex += step);
-  }
-
-  function currentSlide(index) {
-    slideIndex = index;
-    showSlide(slideIndex);
-  }
-
-  // Make slideshow functions global
-  window.changeSlide = changeSlide;
-  window.currentSlide = currentSlide;
-
-  // Auto slide every 5 seconds
-  setInterval(() => { changeSlide(1); }, 5000);
-
-  // Initial slideshow load
-  showSlide(0);
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-```
